@@ -6,35 +6,35 @@ const BoardCreationForm = props => {
     props.onFormSubmission();
   };
 
-  const handleDescriptionInputChange = event => {
-    const description = event.target.value;
-    props.onDescriptionChange(description);
-  };
-
-  const handlePhotoInputChange = event => {
-    const file = event.target.files[0];
-    props.onPhotoChange(file);
-  };
-
   const handleNameInputChange = event => {
     const name = event.target.value;
     props.onNameChange(name);
   };
 
-  const handleSizeInputChange = event => {
-    const size = event.target.value;
-    props.onSizeChange(size);
+  const handleDescriptionInputChange = event => {
+    const description = event.target.value;
+    props.onDescriptionChange(description);
   };
 
-  const handleLevelInputChange = event => {
-    const level = event.target.value;
-    props.onLevelChange(level);
-  };
+  // const handlePhotoInputChange = event => {
+  //   const file = event.target.files[0];
+  //   props.onPhotoChange(file);
+  // };
 
-  const handlePriceInputChange = event => {
-    const price = event.target.value;
-    props.onPriceChange(price);
-  };
+  // const handleSizeInputChange = event => {
+  //   const size = event.target.value;
+  //   props.onSizeChange(size);
+  // };
+
+  // const handleLevelInputChange = event => {
+  //   const level = event.target.value;
+  //   props.onLevelChange(level);
+  // };
+
+  // const handlePriceInputChange = event => {
+  //   const price = event.target.value;
+  //   props.onPriceChange(price);
+  // };
 
   return (
     <form onSubmit={handleFormSubmission}>
@@ -50,7 +50,7 @@ const BoardCreationForm = props => {
         onChange={handleDescriptionInputChange}
       />
 
-      <label htmlFor="input-size">Board Size</label>
+      {/* <label htmlFor="input-size">Board Size</label>
       <input type="text" name="size" onChange={handleSizeInputChange} />
 
       <label htmlFor="input-level">Skill Level</label>
@@ -61,11 +61,12 @@ const BoardCreationForm = props => {
       </select>
 
       <label htmlFor="input-price">Price</label>
-      <input type="text" name="price" onChange={handlePriceInputChange} />
+      <input type="text" name="price" onChange={handlePriceInputChange} /> */}
 
       {/* <label htmlFor="input-photo">Photo</label>
       <input type="file" name="photo" onChange={handlePhotoInputChange} /> */}
-      <button>{props.isEdit ? 'Edit Board' : 'Add Board'}</button>
+
+      <button>Add board</button>
     </form>
   );
 };
