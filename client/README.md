@@ -1,68 +1,126 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Views
 
-## Available Scripts
+```
+PATH                   NAME                 DESCRIPTION
+‘/‘                    - Home               - View All products, select products, filter, add board
+‘/sign-in’             - Sign In            - User sign in
+‘/sign-up’             - Sign Up            - User sign up
 
-In the project directory, you can run:
+‘/map’                 - View All Map       - View all products on map, search map
 
-### `npm start`
+‘/board/:id’           - Product Page       - View all details about product, choose dates and booking
+‘/checkout’            - Checkout           - Payment page
+'/confirmation’        - Confirmation       - Payment confirmation page with booking details
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+'/add’                 - Add Board          - User can add board for rent
+'/:id/edit’            - Edit Board         - User can edit board details
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+'/profile/:id’         - User Profile       - User account profile with details, surf journal, stats, badges, etc.
+'/profile/:id/edit’    - Edit Profile       - User can edit profile details
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Rest API Endpoints
 
-### `npm run build`
+```
+METHOD            PATH                    ENDPOINT
+GET               ‘/boards/list’          -List all boards
+POST              ‘/board’                -Handle board creation
+GET               ‘/board/:id’            -Board information
+DELETE            ‘/board/:id’            -Delete Board product listing
+PATCH             ‘/board/:id’            -Handle board editing form submission, send the edited board as JSON.
+POST              ‘/order’                -Handle order
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+// Route handlers regarding authentication
+POST        -  '/authentication/sign-up'     - Handle sign up form submission.
+POST        -  '/authentication/sign-in'     - Handle sign in form submission.
+POST        -  '/authentication/sign-out'    - Handle sign out form submission.
+GET         -  '/authentication/profile'     - Load an the authenticated user profile
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Models
 
-### `npm run eject`
+```
+//   BOARD
+{
+name: String,
+description: String,
+boardType: {
+ type: String,
+ enum: [Fish, Shortboard, Hybrid, Gun, Funboard, Longboard]
+},
+location: {
+      coordinates: [
+        {
+          type: Number,
+          min: -180,
+          max: 180
+        }
+      ],
+      type: {
+        type: String,
+        default: 'Point'
+      }
+    }
+size: String,
+level: {
+   type: String,
+   enum: [Beginner, Intermediate, Advanced]
+},
+owner: String,
+picture: String,
+rating: Number,
+price: {
+   "amount": Number,       // (Integer, eg. 1500 for 15.00€)
+   "currency": String      // (["EUR", "USD", "GBP"])
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+//   USER
+{
+name: {
+   type: String,
+   trim: true
+},
+email: {
+   type: String,
+   required: true,
+   lowercase: true,
+   trim: true
+},
+passwordHash: {
+   type: String
+},
+level: {
+   type: String,
+   enum: [Beginner, Intermediate, Advanced]
+},
+profilePicture: {
+   type: String,
+   default: url
+},
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+//   ORDER
+{
+   total: {
+   amount: Number,
+   },
+   product: {
+      type: mongoose.Schema.Type.ObjectId,
+      ref: 'Board'
+   }
+   days: Number,  // IS THIS NEEDED?
+   startDate: Date,
+   endDate: Date,
+   charge: String,
+   user: {
+      type: ObjectId,
+      ref: Id
+   }
+}
+```
