@@ -25,6 +25,7 @@ boardRouter.get('/:id', (req, res, next) => {
 });
 
 boardRouter.post('/', (req, res, next) => {
+  console.log(req.body);
   Board.create({
     name: req.body.name,
     description: req.body.description,
@@ -35,6 +36,7 @@ boardRouter.post('/', (req, res, next) => {
   })
     .then(board => res.json({ board }))
     .catch(error => {
+      console.log(error);
       next(error);
     });
 });

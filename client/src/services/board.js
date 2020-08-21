@@ -6,10 +6,14 @@ const api = axios.create({
 });
 
 export const addBoard = body => {
-  const formBody = new window.FormData();
-  formBody.append('name', body.name);
-  formBody.append('description', body.description);
-  return api.post('/board', formBody).then(response => response.data);
+  console.log(body);
+  // const formBody = new window.FormData();
+  // formBody.append('name', body.name);
+  // formBody.append('description', body.description);
+  const { name, description } = body;
+  return api
+    .post('/board', { name, description })
+    .then(response => response.data);
 };
 
 // const listPosts = () =>
