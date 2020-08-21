@@ -2,21 +2,20 @@
 
 ```
 PATH                   NAME                 DESCRIPTION
-‘/‘                    - Home               - View All products, select products, filter, add board
-‘/sign-in’             - Sign In            - User sign in
-‘/sign-up’             - Sign Up            - User sign up
+‘/‘                    - HomeView            - View All products, select products, filter, add board
+‘/sign-in’             - SignInView          - User sign in
+‘/sign-up’             - SignUpView          - User sign up
 
-‘/map’                 - View All Map       - View all products on map, search map
+‘/map’                 - MapView             - View all products on map, search map
 
-‘/board/:id’           - Product Page       - View all details about product, choose dates and booking
-‘/checkout’            - Checkout           - Payment page
-'/confirmation’        - Confirmation       - Payment confirmation page with booking details
+'/add’                 - AddBoardView        - User can add board for rent
+'/:id/edit’            - EditBoardView       - User can edit board details
+‘/board/:id’           - SingleBoardView     - View all details about product, choose dates and booking
+‘/checkout’            - CheckoutView        - Payment page
+'/confirmation’        - ConfirmationView    - Payment confirmation page with booking details
 
-'/add’                 - Add Board          - User can add board for rent
-'/:id/edit’            - Edit Board         - User can edit board details
-
-'/profile/:id’         - User Profile       - User account profile with details, surf journal, stats, badges, etc.
-'/profile/:id/edit’    - Edit Profile       - User can edit profile details
+'/profile/:id’         - UserProfileView       - User account profile with details, surf journal, stats, badges, etc.
+'/profile/:id/edit’    - EditProfileView       - User can edit profile details
 
 ```
 
