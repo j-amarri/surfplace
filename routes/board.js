@@ -39,4 +39,26 @@ boardRouter.post('/', (req, res, next) => {
     });
 });
 
+boardRouter.delete('/:id', (req, res, next) => {
+  const id = req.params.id;
+  Board.findByIdAndDelete(id)
+    .then(board => {
+      res.json({});
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+boardRouter.patch('/:id', (req, res, next) => {
+  const id = req.params.id;
+  Board.findByIdAndUpdate(id, {
+    name: req.body.name
+  })
+    .then(board => res.json({ board }))
+    .catch(error => {
+      next(error);
+    });
+});
+
 module.exports = boardRouter;
