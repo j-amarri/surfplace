@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true
+    required: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 200
   },
   email: {
     type: String,
@@ -14,6 +17,14 @@ const schema = new mongoose.Schema({
     trim: true
   },
   passwordHash: {
+    type: String,
+    required: true
+  },
+  level: {
+    type: String,
+    enum: ['Beginner', 'Intermediate', 'Advanced', 'Professional']
+  },
+  profilePicture: {
     type: String
   }
 });
