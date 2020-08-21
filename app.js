@@ -12,7 +12,10 @@ const serveFavicon = require('serve-favicon');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const indexRouter = require('./routes/index');
+
+// Import backend routers here
 const authenticationRouter = require('./routes/authentication');
+const boardRouter = require('./routes/board');
 
 const app = express();
 
@@ -40,8 +43,10 @@ app.use(
 app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
+// Mount all the different route handlers here
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
+app.use('/board', boardRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

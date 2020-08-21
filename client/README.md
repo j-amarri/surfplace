@@ -23,7 +23,7 @@ PATH                   NAME                 DESCRIPTION
 
 ```
 METHOD            PATH                    ENDPOINT
-GET               ‘/boards/list’          -List all boards
+GET               ‘/board/list’          -List all boards
 POST              ‘/board’                -Handle board creation
 GET               ‘/board/:id’            -Board information
 DELETE            ‘/board/:id’            -Delete Board product listing
