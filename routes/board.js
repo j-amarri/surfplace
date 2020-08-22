@@ -44,7 +44,7 @@ boardRouter.post('/', (req, res, next) => {
 boardRouter.delete('/:id', (req, res, next) => {
   const id = req.params.id;
   Board.findByIdAndDelete(id)
-    .then(board => {
+    .then(() => {
       res.json({});
     })
     .catch(error => {
