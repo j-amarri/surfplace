@@ -33,5 +33,6 @@ button {
   background-color: #1947e6;
   color: white;
   padding: 10px;
+  border: 1px solid;
   border-radius: 10px;
 }

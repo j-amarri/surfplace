@@ -1,0 +1,10 @@
+.board-card {
+  margin: 20px auto;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+img {
+  width: 100px;
+}
