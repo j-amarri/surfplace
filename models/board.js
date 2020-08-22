@@ -15,12 +15,12 @@ const schema = new mongoose.Schema({
   },
   model: {
     type: String,
-    enum: ['Fish', 'Shortboard', 'Hybrid', 'Gun', 'Funboard', 'Longboard']
-    //required: true
+    enum: ['Fish', 'Shortboard', 'Hybrid', 'Gun', 'Funboard', 'Longboard'],
+    required: true
   },
   size: {
-    type: String
-    //required: true
+    type: String,
+    required: true
   },
   level: {
     type: String,
@@ -46,7 +46,7 @@ const schema = new mongoose.Schema({
   },
   picture: {
     type: String,
-    default: './../public/board-placeholder.jpg'
+    default: '/board-placeholder.jpg'
   },
   rating: {
     type: Number,
@@ -54,8 +54,8 @@ const schema = new mongoose.Schema({
     max: 5
   },
   price: {
-    type: Number
-    //required: true
+    type: String,
+    required: true
   }
 });
 

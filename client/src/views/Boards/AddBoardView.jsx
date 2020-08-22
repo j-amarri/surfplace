@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BoardCreationForm from './../../components/BoardCreationForm';
+import BoardCreationForm from '../../components/BoardCreationForm';
 
 import { addBoard } from './../../services/board';
 
@@ -11,7 +11,7 @@ class AddBoardView extends Component {
       description: '',
       model: '',
       size: '',
-      level: '',
+      level: 'All levels',
       price: ''
     };
   }
@@ -19,12 +19,12 @@ class AddBoardView extends Component {
   handleBoardCreation = () => {
     const name = this.state.name;
     const description = this.state.description;
-    // const model = this.state.model;
-    // const size = this.state.size;
-    // const level = this.state.level;
-    // const price = this.state.price;
+    const model = this.state.model;
+    const size = this.state.size;
+    const level = this.state.level;
+    const price = this.state.price;
 
-    const body = { name, description };
+    const body = { name, description, model, size, level, price };
 
     addBoard(body)
       .then(data => {
@@ -49,6 +49,30 @@ class AddBoardView extends Component {
     });
   };
 
+  handleBoardModelChange = model => {
+    this.setState({
+      model
+    });
+  };
+
+  handleBoardSizeChange = size => {
+    this.setState({
+      size
+    });
+  };
+
+  handleBoardLevelChange = level => {
+    this.setState({
+      level
+    });
+  };
+
+  handleBoardPriceChange = price => {
+    this.setState({
+      price
+    });
+  };
+
   // handlePhotoChange = photo => {
   //   this.setState({
   //     photo
@@ -62,8 +86,16 @@ class AddBoardView extends Component {
         <BoardCreationForm
           name={this.state.name}
           description={this.state.description}
+          model={this.state.model}
+          size={this.state.size}
+          level={this.state.level}
+          price={this.state.price}
           onNameChange={this.handleBoardNameChange}
           onDescriptionChange={this.handleBoardDescriptionChange}
+          onModelChange={this.handleBoardModelChange}
+          onSizeChange={this.handleBoardSizeChange}
+          onLevelChange={this.handleBoardLevelChange}
+          onPriceChange={this.handleBoardPriceChange}
           onFormSubmission={this.handleBoardCreation}
         />
       </div>

@@ -59,7 +59,6 @@ class AuthenticationSignInView extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
             required
-            minLength="8"
           />
 
           {this.state.error && (

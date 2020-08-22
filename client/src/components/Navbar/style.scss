@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1947e6;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
