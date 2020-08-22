@@ -6,6 +6,7 @@ const createError = require('http-errors');
 const connectMongo = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const cors = require('cors');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const serveFavicon = require('serve-favicon');
@@ -18,6 +19,14 @@ const authenticationRouter = require('./routes/authentication');
 const boardRouter = require('./routes/board');
 
 const app = express();
+app.set('trust proxy', 1);
+
+app.use(
+  cors({
+    origin: [process.env.CLIENT_APP_URL],
+    credentials: true
+  })
+);
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));

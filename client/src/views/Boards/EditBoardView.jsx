@@ -1,36 +1,38 @@
-<h1>EDIT BOARD VIEW</h1>;
+import React, { Component } from 'react';
 
-// import React, { Component } from 'react';
+class EditBoardView extends Component {
+  // constructor() {
+  //   super();
+  //   this.state = {};
+  // }
 
-// class EditBoardView extends Component {
-//   constructor() {
-//     super();
-//     this.state = {};
-//   }
+  // componentDidMount() {}
 
-//   componentDidMount() {}
+  // handleBoardDetailEdit = () => {
+  //   editBoard();
+  // };
 
-//   handleBoardDetailEdit = () => {
-//     editBoard();
-//   };
+  // handleBoardDeletion = event => {
+  //   event.preventDefault();
 
-//   handleBoardDeletion = event => {
-//     event.preventDefault();
+  //   deleteBoard();
+  // };
 
-//     deleteBoard();
-//   };
+  // handleDetailsChange = details => {};
 
-//   handleDetailsChange = details => {};
+  // handlePhotoChange = photo => {
+  //   this.setState({
+  //     photo
+  //   });
+  // };
 
-//   handlePhotoChange = photo => {
-//     this.setState({
-//       photo
-//     });
-//   };
+  render() {
+    return (
+      <div>
+        <h1>EDIT BOARD VIEW</h1>;
+      </div>
+    );
+  }
+}
 
-//   render() {
-//     return <div></div>;
-//   }
-// }
-
-// export default EditBoardView;
+export default EditBoardView;
