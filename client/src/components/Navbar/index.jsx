@@ -14,8 +14,8 @@ const Navbar = props => {
         </>
       )) || (
         <>
-          <Link to="/authentication/sign-up">Sign Up</Link>
-          <Link to="/authentication/sign-in">Sign In</Link>
+          <Link to="/sign-up">Sign Up</Link>
+          <Link to="/sign-in">Sign In</Link>
         </>
       )}
     </nav>

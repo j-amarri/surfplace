@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { loadMe, signOut } from './services/authentication';
 import './App.css';
 
 // Components
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 
 // General views
 import HomeView from './views/HomeView';
@@ -28,18 +30,70 @@ import UserProfileView from './views/Profile/UserProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loaded: false,
+      user: null
+    };
+  }
+
+  componentDidMount() {
+    loadMe()
+      .then(data => {
+        const user = data.user;
+        this.handleUserUpdate(user);
+        this.setState({
+          loaded: true
+        });
+      })
+      .then(error => {
+        console.log(error);
+      });
+  }
+
+  handleUserUpdate = user => {
+    this.setState({
+      user
+    });
+  };
+
+  handleSignOut = () => {
+    signOut()
+      .then(() => {
+        this.handleUserUpdate(null);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
           <Switch>
             <Route path="/" component={HomeView} exact />
             <Route path="/map" component={MapView} />
             <Route path="/error" component={ErrorView} />
             // Auth views
-            <Route path="/sign-up" component={SignUpView} />
-            <Route path="/sign-in" component={SignInView} />
+            <ProtectedRoute
+              path="/sign-up"
+              render={props => (
+                <SignUpView {...props} onUserUpdate={this.handleUserUpdate} />
+              )}
+              authorized={!this.state.user}
+              redirect="/"
+            />
+            <ProtectedRoute
+              path="/sign-in"
+              render={props => (
+                <SignInView {...props} onUserUpdate={this.handleUserUpdate} />
+              )}
+              authorized={!this.state.user}
+              redirect="/"
+            />
             // Boards views
             <Route path="/board/add" component={AddBoardView} />
             <Route path="/board/:id/edit" component={EditBoardView} />
