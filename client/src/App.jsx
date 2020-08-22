@@ -95,15 +95,50 @@ class App extends Component {
               redirect="/"
             />
             // Boards views
-            <Route path="/board/add" component={AddBoardView} />
-            <Route path="/board/:id/edit" component={EditBoardView} />
-            <Route path="/board/:id" component={SingleBoardView} />
+            <ProtectedRoute
+              path="/board/add"
+              component={AddBoardView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
+            <ProtectedRoute
+              path="/board/:id/edit"
+              component={EditBoardView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
+            <ProtectedRoute
+              path="/board/:id"
+              component={SingleBoardView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
             // Booking views
-            <Route path="/checkout" component={CheckOutView} />
-            <Route path="/confirmation" component={ConfirmationView} />
+            <ProtectedRoute
+              path="/checkout"
+              component={CheckOutView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
+            <ProtectedRoute
+              path="/confirmation"
+              component={ConfirmationView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
             // Profile views
-            <Route path="/profile/:id/edit" component={EditProfileView} />
-            <Route path="/profile/:id" component={UserProfileView} />
+            <ProtectedRoute
+              path="/profile/:id/edit"
+              component={EditProfileView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
+            <ProtectedRoute
+              path="/profile/:id"
+              component={UserProfileView}
+              authorized={this.state.user}
+              redirect="/sign-in"
+            />
           </Switch>
         </BrowserRouter>
       </div>

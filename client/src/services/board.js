@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 export const addBoard = body =>
-  api.post('/post', body).then(response => response.data);
+  api.post('/board', body).then(response => response.data);
 
 // export const addBoard = body => {
 //   // const formBody = new window.FormData();
