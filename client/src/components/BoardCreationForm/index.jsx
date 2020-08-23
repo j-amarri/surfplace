@@ -97,8 +97,13 @@ const BoardCreationForm = props => {
         required
       />
 
-      <label htmlFor="input-photo">Photo</label>
-      <input type="file" name="photo" onChange={handlePictureInputChange} />
+      <label htmlFor="input-picture">Picture</label>
+      <input
+        id="input-picture"
+        type="file"
+        name="picture"
+        onChange={handlePictureInputChange}
+      />
 
       <button>Add board</button>
     </form>
