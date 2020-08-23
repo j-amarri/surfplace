@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 
 const BoardCard = ({ name, price, size, model, level, picture }) => {
-  console.log(picture);
   return (
     <div className="board-card">
       <img src="/board-placeholder.jpg" alt="" />
