@@ -105,7 +105,7 @@ const BoardCreationForm = props => {
         onChange={handlePictureInputChange}
       />
 
-      <button>Add board</button>
+      <button>Submit</button>
     </form>
   );
 };

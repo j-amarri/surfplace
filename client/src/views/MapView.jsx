@@ -5,7 +5,10 @@ class MapView extends Component {
   render() {
     return (
       <div style={{ width: '100vw', height: '100vh' }}>
-        <h1>MAP VIEW</h1>
+        <div className="header-map-image">
+          <h1>Find a board</h1>
+        </div>
+
         <WrappedMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=GOOGLE_MAPS_API_KEY`}
           loadingElement={<div style={{ height: '100%' }} />}
