@@ -1,7 +1,17 @@
 const express = require('express');
 
 const Board = require('./../models/board');
+
+const multer = require('multer');
+const cloudinary = require('cloudinary');
+const multerStorageCloudinary = require('multer-storage-cloudinary');
+
 const boardRouter = new express.Router();
+
+const storage = new multerStorageCloudinary.CloudinaryStorage({
+  cloudinary: cloudinary.v2
+});
+const upload = multer({ storage });
 
 boardRouter.get('/list', (req, res, next) => {
   Board.find()
@@ -24,12 +34,17 @@ boardRouter.get('/:id', (req, res, next) => {
     });
 });
 
-boardRouter.post('/', (req, res, next) => {
-  console.log(req.body);
+boardRouter.post('/', upload.single('picture'), (req, res, next) => {
+  let url;
+  if (req.file) {
+    url = req.file.path;
+  }
+  console.log(url);
   Board.create({
     name: req.body.name,
     description: req.body.description,
     model: req.body.model,
+    picture: url,
     size: req.body.size,
     level: req.body.level,
     price: req.body.price

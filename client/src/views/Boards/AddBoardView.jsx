@@ -10,6 +10,7 @@ class AddBoardView extends Component {
       name: '',
       description: '',
       model: '',
+      picture: null,
       size: '',
       level: 'All levels',
       price: ''
@@ -20,12 +21,14 @@ class AddBoardView extends Component {
     const name = this.state.name;
     const description = this.state.description;
     const model = this.state.model;
+    const picture = this.state.picture;
     const size = this.state.size;
     const level = this.state.level;
     const price = this.state.price;
 
-    const body = { name, description, model, size, level, price };
+    const body = { name, description, model, picture, size, level, price };
 
+    console.log(body);
     addBoard(body)
       .then(data => {
         //const board = data.board;
@@ -73,11 +76,11 @@ class AddBoardView extends Component {
     });
   };
 
-  // handlePhotoChange = photo => {
-  //   this.setState({
-  //     photo
-  //   });
-  // };
+  handlePictureChange = picture => {
+    this.setState({
+      picture
+    });
+  };
 
   render() {
     return (
@@ -87,12 +90,14 @@ class AddBoardView extends Component {
           name={this.state.name}
           description={this.state.description}
           model={this.state.model}
+          picture={this.state.picture}
           size={this.state.size}
           level={this.state.level}
           price={this.state.price}
           onNameChange={this.handleBoardNameChange}
           onDescriptionChange={this.handleBoardDescriptionChange}
           onModelChange={this.handleBoardModelChange}
+          onPictureChange={this.handlePictureChange}
           onSizeChange={this.handleBoardSizeChange}
           onLevelChange={this.handleBoardLevelChange}
           onPriceChange={this.handleBoardPriceChange}

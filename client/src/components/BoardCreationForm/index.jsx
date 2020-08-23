@@ -22,10 +22,10 @@ const BoardCreationForm = props => {
     props.onModelChange(model);
   };
 
-  // const handlePhotoInputChange = event => {
-  //   const file = event.target.files[0];
-  //   props.onPhotoChange(file);
-  // };
+  const handlePictureInputChange = event => {
+    const file = event.target.files[0];
+    props.onPictureChange(file);
+  };
 
   const handleSizeInputChange = event => {
     const size = event.target.value;
@@ -97,8 +97,8 @@ const BoardCreationForm = props => {
         required
       />
 
-      {/* <label htmlFor="input-photo">Photo</label>
-      <input type="file" name="photo" onChange={handlePhotoInputChange} /> */}
+      <label htmlFor="input-photo">Photo</label>
+      <input type="file" name="photo" onChange={handlePictureInputChange} />
 
       <button>Add board</button>
     </form>
