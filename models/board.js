@@ -45,8 +45,7 @@ const schema = new mongoose.Schema({
     ref: 'User'
   },
   picture: {
-    type: String,
-    default: '/board-placeholder.jpg'
+    type: String
   },
   rating: {
     type: Number,

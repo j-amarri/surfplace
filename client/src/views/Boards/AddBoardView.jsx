@@ -10,7 +10,7 @@ class AddBoardView extends Component {
       name: '',
       description: '',
       model: '',
-      picture: null,
+      picture: '/board-placeholder.jpg',
       size: '',
       level: 'All levels',
       price: ''

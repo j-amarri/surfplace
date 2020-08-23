@@ -5,18 +5,11 @@ const api = axios.create({
   withCredentials: true
 });
 
-export const addBoard = body =>
-  api.post('/board', body).then(response => response.data);
-
-// export const addBoard = body => {
-//   // const formBody = new window.FormData();
-//   // formBody.append('name', body.name);
-//   // formBody.append('description', body.description);
-//   const { name, description } = body;
-//   return api
-//     .post('/board', { name, description })
-//     .then(response => response.data);
-// };
+export const addBoard = body => {
+  const formBody = new window.FormData();
+  for (let property in body) formBody.append(property, body[property]);
+  return api.post('/board', formBody).then(response => response.data);
+};
 
 export const listBoards = () =>
   api.get('/board/list').then(response => response.data);
