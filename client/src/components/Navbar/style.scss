@@ -1,9 +1,10 @@
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #1947e6;
+  padding: 5px 10px;
 }
 
 .nav-link {

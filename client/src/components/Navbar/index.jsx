@@ -6,10 +6,7 @@ const Navbar = props => {
   return (
     <div className="container">
       <nav>
-        <img width="50px" src="/logo.png" alt="logo" />
-        <Link className="nav-link" to="/">
-          SurfPlace
-        </Link>
+        <img width="75px" src="/logo.png" alt="logo" />
         <Link className="nav-link" to="/board/add">
           Add A Board
         </Link>

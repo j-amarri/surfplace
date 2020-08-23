@@ -5,11 +5,14 @@ const BoardCard = ({ name, price, size, model, level, picture }) => {
   return (
     <div className="board-card">
       <img src="/board-placeholder.jpg" alt="" />
-      <h3>{name}</h3>
-      <p>{price}</p>
-      <p>{size}</p>
-      <span>{model}</span>
-      <span>{level}</span>
+      <div className="board-card-details">
+        <h3>{name}</h3>
+        <p>€{price}/day</p>
+        <div className="size-model">
+          <p>{size}"</p>
+          <p>{model}</p>
+        </div>
+      </div>
     </div>
   );
 };
