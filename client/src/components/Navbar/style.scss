@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
+
 nav {
   display: flex;
   flex-direction: row;
@@ -5,6 +8,9 @@ nav {
   align-items: center;
   background-color: #1947e6;
   padding: 5px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
 }
 
 .nav-link {
