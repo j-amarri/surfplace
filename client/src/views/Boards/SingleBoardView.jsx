@@ -55,6 +55,9 @@ class SingleBoardView extends Component {
                   </h2>
                 </div>
               </div>
+              <div className="booking-calendar">
+                <p>booking calendar integration</p>
+              </div>
               <div className="buttons">
                 <Link to={`/checkout`} className="rent-link">
                   Rent board
@@ -68,6 +71,9 @@ class SingleBoardView extends Component {
                 <Link to={`/`} className="delete-link">
                   🗑 Delete board
                 </Link>
+              </div>
+              <div>
+                <p>Reviews</p>
               </div>
             </>
           )) || <p>Loading...</p>}
