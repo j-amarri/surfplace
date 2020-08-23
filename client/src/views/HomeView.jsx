@@ -31,6 +31,9 @@ class HomeView extends Component {
         <div className="header-image">
           <h1>Surf Boards</h1>
         </div>
+        <div className="map-link">
+          <a href="/map">🗺 Map</a>
+        </div>
         <div className="boards-list">
           {this.state.boards.map(board => (
             <BoardCard {...board} key={board._id} />

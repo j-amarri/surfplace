@@ -77,7 +77,7 @@ class App extends Component {
             <Route path="/" component={HomeView} exact />
             <Route path="/map" component={MapView} />
             <Route path="/error" component={ErrorView} />
-            // Auth views
+            {/* // Auth views */}
             <ProtectedRoute
               path="/sign-up"
               render={props => (
@@ -94,7 +94,7 @@ class App extends Component {
               authorized={!this.state.user}
               redirect="/"
             />
-            // Boards views
+            {/* // Boards views */}
             <ProtectedRoute
               path="/board/add"
               component={AddBoardView}
@@ -113,7 +113,7 @@ class App extends Component {
               authorized={this.state.user}
               redirect="/sign-in"
             />
-            // Booking views
+            {/* // Booking views */}
             <ProtectedRoute
               path="/checkout"
               component={CheckOutView}
@@ -126,7 +126,7 @@ class App extends Component {
               authorized={this.state.user}
               redirect="/sign-in"
             />
-            // Profile views
+            {/* // Profile views */}
             <ProtectedRoute
               path="/profile/:id/edit"
               component={EditProfileView}

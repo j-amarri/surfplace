@@ -40,6 +40,7 @@ button {
 /* HOME VIEW ALL BOARD LIST */
 .boards-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .header-image {
@@ -54,4 +55,14 @@ button {
   background-color: #00c6ae;
   padding: 20px;
   margin: 0;
+}
+
+.map-link {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.map-link a {
+  text-decoration: none;
 }
