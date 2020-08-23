@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-// import loadBoard from './../../services/board.js';
+import { loadBoard } from './../../services/board';
+import BoardCard from './../../components/BoardCard';
 
 class SingleBoardView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
-      boards: []
+      board: null
     };
   }
 
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    loadBoard(id)
+      .then(data => {
+        const board = data.board;
+        this.setState({
+          board,
+          loaded: true
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
+    const board = this.state.board;
     return (
       <>
-        <div className="header-image">
-          <h1>Surf Boards</h1>
+        <div>
+          <BoardCard />
         </div>
-        {/* <div className="boards-list">
-          <BoardCard {...board} key={board._id} />
-        </div> */}
       </>
     );
   }
