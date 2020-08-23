@@ -6,9 +6,8 @@ const BoardCard = ({ name, price, size, model, level, picture, _id }) => {
   return (
     <div className="board-card">
       <Link to={`/board/${_id}`}>
-        <img src="/board-placeholder.jpg" alt="" />
+        <img src={picture} alt="" />
       </Link>
-      <img src={picture} alt="" />
       <div className="board-card-details">
         <h3>{name}</h3>
         <p>€{price}/day</p>
