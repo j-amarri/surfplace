@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.scss';
 
 const BoardCard = ({ name, price, size, model, level, picture }) => {
   return (
