@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBoard, deleteBoard } from './../../services/board';
+import { DatePicker } from '@y0c/react-datepicker';
 
 class SingleBoardView extends Component {
   constructor(props) {
@@ -26,6 +27,10 @@ class SingleBoardView extends Component {
       });
   }
 
+  handleSelect(ranges) {
+    console.log(ranges);
+  }
+
   handleBoardDelete = event => {
     event.preventDefault();
     const id = this.props.match.params.id;
@@ -41,19 +46,21 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
+    const selectionRange = {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection'
+    };
     return (
       <>
         <div className="single-board-view">
           {(this.state.loaded && (
             <>
-              {board.picture && (
-                <img
-                  className="single-board-image"
-                  src={board.picture}
-                  alt={board.name}
-                  width="100%"
-                />
-              )}
+              <div className="single-board-image">
+                {board.picture && (
+                  <img src={board.picture} alt={board.name} width="100%" />
+                )}
+              </div>
               <div className="single-board-details">
                 <div>
                   <h1>{board.name}</h1>
@@ -69,7 +76,7 @@ class SingleBoardView extends Component {
                 </div>
               </div>
               <div className="booking-calendar">
-                <p>booking calendar integration</p>
+                <p>Choose date(s)</p>
               </div>
               <div className="buttons">
                 <Link to={`/checkout`} className="rent-link">

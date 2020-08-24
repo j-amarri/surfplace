@@ -81,10 +81,6 @@ button {
   margin: 0;
 }
 
-.single-board-image {
-  background-color: yellow;
-}
-
 .single-board-details {
   display: flex;
   flex-direction: column;
@@ -105,6 +101,11 @@ button {
     justify-content: space-evenly;
     align-content: center;
   }
+}
+
+.single-board-view {
+  max-width: 500px;
+  height: 200px;
 }
 
 .single-board-view button {
