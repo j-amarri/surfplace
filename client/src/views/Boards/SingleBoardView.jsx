@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBoard, deleteBoard } from './../../services/board';
-import { DatePicker } from '@y0c/react-datepicker';
+import { RangeDatePicker } from '@y0c/react-datepicker';
+import '@y0c/react-datepicker/assets/styles/calendar.scss';
+import 'moment/locale/ko';
 
 class SingleBoardView extends Component {
   constructor(props) {
@@ -27,9 +29,9 @@ class SingleBoardView extends Component {
       });
   }
 
-  handleSelect(ranges) {
-    console.log(ranges);
-  }
+  onChange = date => {
+    console.log(date);
+  };
 
   handleBoardDelete = event => {
     event.preventDefault();
@@ -46,11 +48,7 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
-    const selectionRange = {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection'
-    };
+
     return (
       <>
         <div className="single-board-view">
@@ -79,6 +77,8 @@ class SingleBoardView extends Component {
               </div>
               <div className="booking-calendar">
                 <p>Choose date(s)</p>
+
+                <RangeDatePicker locale="ko" onChange={this.onChange} />
               </div>
               <div className="buttons">
                 <Link to={`/checkout`} className="rent-link">
