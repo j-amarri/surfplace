@@ -65,7 +65,7 @@ class SingleBoardView extends Component {
                   <h1>{board.name}</h1>
                   <h2>{board.size}'</h2>
                 </div>
-                <Link to={`/profile/${board.owner}`}>
+                <Link to={`/profile/${board.owner._id}`}>
                   <em>by {board.owner.name}</em>
                 </Link>
                 <p>{board.description}</p>
