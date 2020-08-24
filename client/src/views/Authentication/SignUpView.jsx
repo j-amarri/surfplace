@@ -7,7 +7,8 @@ class AuthenticationSignUpView extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      level: ''
     };
   }
 
@@ -20,8 +21,8 @@ class AuthenticationSignUpView extends Component {
 
   handleFormSubmission = event => {
     event.preventDefault();
-    const { name, email, password } = this.state;
-    const body = { name, email, password };
+    const { name, email, password, level } = this.state;
+    const body = { name, email, password, level };
     signUp(body)
       .then(data => {
         const { user } = data;
@@ -65,6 +66,15 @@ class AuthenticationSignUpView extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
           />
+
+          <label htmlFor="input-level">Level</label>
+          <select name="level" onChange={this.handleInputChange} required>
+            <option value="">Select a level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Professional">Professional</option>
+          </select>
 
           <button>Sign Up</button>
         </form>

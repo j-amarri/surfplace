@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { listBoards } from './../services/board';
 import BoardCard from './../components/BoardCard';
+import { NotExtended } from 'http-errors';
 
 class HomeView extends Component {
   constructor(props) {
@@ -25,6 +26,23 @@ class HomeView extends Component {
       });
   }
 
+  filterByLevel = event => {
+    const level = event.target.value;
+    listBoards()
+      .then(data => {
+        const filteredBoards = data.boards.filter(
+          board => board.level === level
+        );
+        this.setState({
+          boards: filteredBoards,
+          loaded: true
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <>
@@ -33,6 +51,18 @@ class HomeView extends Component {
         </div>
         <div className="map-link">
           <a href="/map">🗺 Map</a>
+        </div>
+        <div className="filter-dropdown">
+          <select
+            name="filter-level"
+            id="filter-level"
+            onChange={this.filterByLevel}
+          >
+            <option value="All levels">All levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
         </div>
         <div className="boards-list">
           {this.state.boards.map(board => (

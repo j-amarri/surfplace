@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { signIn } from './../../services/authentication';
-import SignInView from './SignInView.scss';
 
 class AuthenticationSignInView extends Component {
   constructor() {

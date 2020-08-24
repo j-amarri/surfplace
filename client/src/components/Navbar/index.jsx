@@ -15,7 +15,9 @@ const Navbar = props => {
         </Link>
         {(props.user && (
           <>
-            <span>{props.user.name}</span>
+            <Link className="nav-link" to={`/profile/${props.user._id}`}>
+              <span>{props.user.name}</span>
+            </Link>
             <button onClick={props.onSignOut}>Sign Out</button>
           </>
         )) || (

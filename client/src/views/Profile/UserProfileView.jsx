@@ -40,7 +40,6 @@ class UserProfileView extends Component {
   }
 
   render() {
-    console.log(this.state.boards);
     return (
       <div>
         {this.state.loaded && (
