@@ -9,7 +9,10 @@ class HomeView extends Component {
     super(props);
     this.state = {
       loaded: false,
-      boards: []
+      boards: [],
+      model: null,
+      size: null,
+      level: null
     };
   }
 
@@ -29,39 +32,26 @@ class HomeView extends Component {
 
   filterByLevel = event => {
     const level = event.target.value;
-    listBoards()
-      .then(data => {
-        const filteredBoards = data.boards.filter(
-          board => board.level === level
-        );
-        this.setState({
-          boards: filteredBoards,
-          loaded: true
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.setState({ level });
   };
 
   filterByModel = event => {
     const model = event.target.value;
-    listBoards()
-      .then(data => {
-        const filteredBoards = data.boards.filter(
-          board => board.model === model
-        );
-        this.setState({
-          boards: filteredBoards,
-          loaded: true
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.setState({ model });
   };
 
+  get filteredBoardsList() {
+    const model = this.state.model;
+    const level = this.state.level;
+    const size = this.state.size;
+    return this.state.boards
+      .filter(board => (model ? board.model === model : true))
+      .filter(board => (size ? board.size === size : true))
+      .filter(board => (level ? board.level === level : true));
+  }
+
   render() {
+    const boardsToShow = this.filteredBoardsList;
     return (
       <>
         <div className="header-image">
@@ -103,7 +93,7 @@ class HomeView extends Component {
         </div>
         <SizeSlider />
         <div className="boards-list">
-          {this.state.boards.map(board => (
+          {boardsToShow.map(board => (
             <BoardCard {...board} key={board._id} />
           ))}
         </div>
