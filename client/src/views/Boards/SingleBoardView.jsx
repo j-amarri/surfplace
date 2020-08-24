@@ -46,7 +46,9 @@ class SingleBoardView extends Component {
                   <h1>{board.name}</h1>
                   <h2>{board.size}'</h2>
                 </div>
-                <em>by {board.owner}</em>
+                <Link to={`/profile/${board.owner}`}>
+                  <em>by {board.owner}</em>
+                </Link>
                 <p>{board.description}</p>
                 <div className="review-price">
                   <p>⭐️⭐️⭐️⭐️⭐️ 4.6 (5 ratings)</p>
