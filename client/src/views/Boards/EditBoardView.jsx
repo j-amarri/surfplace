@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
 import BoardCreationForm from '../../components/BoardCreationForm';
 
-import { addBoard } from './../../services/board';
+import { editBoard, loadBoard, deleteBoard } from './../../services/board';
 
-class AddBoardView extends Component {
+class EditBoardView extends Component {
   constructor() {
     super();
     this.state = {
       name: '',
       description: '',
       model: '',
-      picture: '/board-placeholder.jpg',
+      picture: '',
       size: '',
       level: 'All levels',
       price: ''
     };
   }
+  componentDidMount() {
+    loadBoard(this.props.match.params.id)
+      .then(data => {
+        const board = data.board;
+        this.setState({
+          loaded: true,
+          name: board.name,
+          description: board.description,
+          model: board.model,
+          picture: board.picture,
+          size: board.size,
+          level: board.level,
+          price: board.price
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-  handleBoardCreation = () => {
+  handleBoardEdit = () => {
+    const id = this.props.match.params.id;
     const name = this.state.name;
     const description = this.state.description;
     const model = this.state.model;
@@ -25,15 +45,24 @@ class AddBoardView extends Component {
     const size = this.state.size;
     const level = this.state.level;
     const price = this.state.price;
-
     const body = { name, description, model, picture, size, level, price };
 
-    console.log(body);
-    addBoard(body)
+    editBoard(id, body)
       .then(data => {
-        //const board = data.board;
-        //const id = board._id;
-        this.props.history.push(`/`);
+        this.props.history.push(`/board/${id}`);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  handleBoardDelete = event => {
+    event.preventDefault();
+    const id = this.props.match.params.id;
+
+    deleteBoard(id)
+      .then(() => {
+        this.props.history.push('/');
       })
       .catch(error => {
         console.log(error);
@@ -101,11 +130,14 @@ class AddBoardView extends Component {
           onSizeChange={this.handleBoardSizeChange}
           onLevelChange={this.handleBoardLevelChange}
           onPriceChange={this.handleBoardPriceChange}
-          onFormSubmission={this.handleBoardCreation}
+          onFormSubmission={this.handleBoardEdit}
         />
+        <form onSubmit={this.handleBoardDelete}>
+          <button>Detele Board</button>
+        </form>
       </div>
     );
   }
 }
 
-export default AddBoardView;
+export default EditBoardView;

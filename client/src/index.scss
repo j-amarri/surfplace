@@ -107,6 +107,17 @@ button {
   }
 }
 
+.single-board-view button {
+  background-color: white;
+  color: #18191f;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5em 3em;
+  margin-bottom: 0.5em;
+  border: none;
+  width: 100%;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
