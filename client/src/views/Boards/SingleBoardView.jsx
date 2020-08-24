@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { loadBoard } from './../../services/board';
+import { loadBoard, deleteBoard } from './../../services/board';
 
 class SingleBoardView extends Component {
   constructor(props) {
@@ -25,6 +25,19 @@ class SingleBoardView extends Component {
         console.log(error);
       });
   }
+
+  handleBoardDelete = event => {
+    event.preventDefault();
+    const id = this.props.match.params.id;
+
+    deleteBoard(id)
+      .then(() => {
+        this.props.history.push('/');
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   render() {
     const board = this.state.board;
@@ -68,9 +81,9 @@ class SingleBoardView extends Component {
                 >
                   ✏️ Edit board
                 </Link>
-                <Link to={`/`} className="delete-link">
-                  🗑 Delete board
-                </Link>
+                <form onSubmit={this.handleBoardDelete}>
+                  <button>🗑 Delete board</button>
+                </form>
               </div>
               <div>
                 <p>Reviews</p>
