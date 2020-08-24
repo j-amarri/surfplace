@@ -54,8 +54,12 @@ const schema = new mongoose.Schema({
     max: 5
   },
   price: {
-    type: String,
-    required: true
+    amount: Number,
+    currency: {
+      type: String,
+      enum: ['EUR', 'USD']
+    }
+    // required: true
   }
 });
 

@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import CheckoutForm from './../../components/CheckOutForm';
 
 class CheckoutView extends Component {
-  // handleCheckout = ({ address, token }) => {
-  //   createOrder();
-  // };
+  handleCheckout = () => {
+    console.log('checking out');
+  };
 
   render() {
     return (
-      <div>
+      <div className="checkout-container">
         <h1>Board checkout view</h1>
+        <CheckoutForm onCheckout={this.handleCheckout} />
       </div>
     );
   }

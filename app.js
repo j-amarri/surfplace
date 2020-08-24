@@ -12,11 +12,12 @@ const mongoose = require('mongoose');
 const serveFavicon = require('serve-favicon');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
-const indexRouter = require('./routes/index');
 
 // Import backend routers here
+const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const boardRouter = require('./routes/board');
+const orderRouter = require('./routes/order');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -56,6 +57,7 @@ app.use(bindUserToViewLocals);
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/board', boardRouter);
+app.use('/order', orderRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

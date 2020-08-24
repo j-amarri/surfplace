@@ -34,7 +34,8 @@ class App extends Component {
     super();
     this.state = {
       loaded: false,
-      user: null
+      user: null,
+      order: []
     };
   }
 
@@ -116,7 +117,7 @@ class App extends Component {
             {/* // Booking views */}
             <ProtectedRoute
               path="/checkout"
-              component={CheckOutView}
+              render={props => <CheckOutView {...props} />}
               authorized={this.state.user}
               redirect="/sign-in"
             />

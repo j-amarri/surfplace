@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  total: Number,
+  total: {
+    amount: Number,
+    currency: {
+      type: String,
+      enum: ['EUR', 'USD']
+    }
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -19,7 +25,8 @@ const schema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: true
-  }
+  },
+  charge: String
 });
 
 module.exports = mongoose.model('Order', schema);
