@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import { loadMe } from './../../services/authentication';
+import { listBoards } from './../../services/board';
+import BoardCard from '../../components/BoardCard';
 
 class UserProfileView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
+      boards: [],
       user: null
     };
   }
 
   componentDidMount() {
-    loadMe()
-      .then(user => {
+    listBoards()
+      .then(data => {
         this.setState({
-          user,
+          boards: data.boards
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    loadMe()
+      .then(data => {
+        this.setState({
+          user: data.user,
           loaded: true
         });
       })
@@ -24,12 +37,20 @@ class UserProfileView extends Component {
   }
 
   render() {
+    console.log(this.state.boards);
     return (
       <div>
         {this.state.loaded && (
           <>
-            <h1>User profile</h1>
-            <h2>{this.state.user.email}</h2>
+            <h3>Your details</h3>
+            <h2>{this.state.user.name}</h2>
+            <h3>Your boards</h3>
+            <div className="boards-list">
+              /// filter array based on owner?
+              {this.state.boards.map(board => (
+                <BoardCard {...board} key={board._id} />
+              ))}
+            </div>
           </>
         )}
       </div>
