@@ -110,9 +110,11 @@ class App extends Component {
             />
             <ProtectedRoute
               path="/board/:id"
-              component={SingleBoardView}
               authorized={this.state.user}
               redirect="/sign-in"
+              render={props => (
+                <SingleBoardView {...props} user={this.state.user} />
+              )}
             />
             {/* // Booking views */}
             <ProtectedRoute

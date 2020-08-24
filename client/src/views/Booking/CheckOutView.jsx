@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CheckoutForm from './../../components/CheckOutForm';
 
 class CheckoutView extends Component {
   handleCheckout = () => {
@@ -10,7 +9,6 @@ class CheckoutView extends Component {
     return (
       <div className="checkout-container">
         <h1>Board checkout view</h1>
-        <CheckoutForm onCheckout={this.handleCheckout} />
       </div>
     );
   }

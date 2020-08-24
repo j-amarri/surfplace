@@ -4,10 +4,18 @@ const Order = require('./../models/order');
 const orderRouter = new express.Router();
 
 orderRouter.post('/', (req, res, next) => {
-  Order.find()
-    .then(order => {
-      console.log(order);
-      res.json({ order });
+  const { product, user, startDate, endDate } = req.body;
+  // Order.find()
+  //   .then(order => {
+  //     console.log(order);
+  //     res.json({ order });
+  //   })
+  //   .catch(error => {
+  //     next(error);
+  //   });
+  Order.create({ product, user, startDate, endDate, paid: false })
+    .then(newOrder => {
+      res.json({ newOrder });
     })
     .catch(error => {
       next(error);

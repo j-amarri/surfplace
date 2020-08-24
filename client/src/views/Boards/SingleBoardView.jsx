@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBoard, deleteBoard } from './../../services/board';
+import { createOrder } from './../../services/order';
 import { RangeDatePicker } from '@y0c/react-datepicker';
 import '@y0c/react-datepicker/assets/styles/calendar.scss';
 import 'moment/locale/ko';
@@ -10,7 +11,9 @@ class SingleBoardView extends Component {
     super(props);
     this.state = {
       loaded: false,
-      board: null
+      board: null,
+      startDate: null,
+      endDate: null
     };
   }
 
@@ -29,9 +32,25 @@ class SingleBoardView extends Component {
       });
   }
 
-  onChange = date => {
-    const startDate = this.state.stateValue;
-    console.log(startDate);
+  onChange = (...data) => {
+    const startDate = data[0];
+    const endDate = data[1];
+    this.setState({ startDate, endDate });
+  };
+
+  handleOrderCreation = event => {
+    event.preventDefault();
+    const id = this.props.match.params.id;
+    // information from board, user ID, start/end date
+    const product = this.state.board._id;
+    const startDate = this.state.startDate;
+    const endDate = this.state.endDate;
+    const user = this.props.user._id;
+    const body = { product, startDate, endDate, user };
+    createOrder(body).then(newOrder => {
+      console.log(newOrder);
+      this.props.history.push(`/checkout/${newOrder._id}`);
+    });
   };
 
   handleBoardDelete = event => {
@@ -49,7 +68,6 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
-    console.log(board);
     return (
       <>
         <div className="single-board-view">
@@ -81,13 +99,12 @@ class SingleBoardView extends Component {
               </div>
               <div className="booking-calendar">
                 <p>Choose date(s)</p>
-
                 <RangeDatePicker locale="ko" onChange={this.onChange} />
               </div>
               <div className="buttons">
-                <Link to={`/checkout`} className="rent-link">
-                  Rent board
-                </Link>
+                <form onSubmit={this.handleOrderCreation} className="rent-link">
+                  <button>Rent Board</button>
+                </form>
                 <Link
                   to={`/board/${this.props.match.params.id}/edit`}
                   className="edit-link"

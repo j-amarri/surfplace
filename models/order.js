@@ -25,8 +25,8 @@ const schema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: true
-  },
-  charge: String
+  }
+  // charge: String
 });
 
 module.exports = mongoose.model('Order', schema);
