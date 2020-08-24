@@ -30,7 +30,8 @@ class SingleBoardView extends Component {
   }
 
   onChange = date => {
-    console.log(date);
+    const startDate = this.state.stateValue;
+    console.log(startDate);
   };
 
   handleBoardDelete = event => {
