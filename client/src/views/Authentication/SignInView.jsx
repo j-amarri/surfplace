@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signIn } from './../../services/authentication';
+import SignInView from './SignInView.scss';
 
 class AuthenticationSignInView extends Component {
   constructor() {
@@ -37,9 +38,11 @@ class AuthenticationSignInView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sign-in-container">
+        <img width="175px" src="/logo.png" alt="logo" />
+        <h2>Login</h2>
         <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor="input-email">Email</label>
+          <label htmlFor="input-email"></label>
           <input
             id="input-email"
             type="email"
@@ -50,7 +53,7 @@ class AuthenticationSignInView extends Component {
             required
           />
 
-          <label htmlFor="input-password">Password</label>
+          <label htmlFor="input-password"></label>
           <input
             id="input-password"
             type="password"
@@ -70,6 +73,10 @@ class AuthenticationSignInView extends Component {
 
           <button>Sign In</button>
         </form>
+        <small>You are new? </small>
+        <a href="/sign-up" alt="">
+          Create an account
+        </a>
       </div>
     );
   }
