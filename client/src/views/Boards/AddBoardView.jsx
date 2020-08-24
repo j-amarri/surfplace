@@ -28,7 +28,6 @@ class AddBoardView extends Component {
 
     const body = { name, description, model, picture, size, level, price };
 
-    console.log(body);
     addBoard(body)
       .then(data => {
         //const board = data.board;

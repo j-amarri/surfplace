@@ -70,7 +70,10 @@ class SingleBoardView extends Component {
                 </Link>
                 <p>{board.description}</p>
                 <div className="review-price">
-                  <p>⭐️⭐️⭐️⭐️⭐️ 4.6 (5 ratings)</p>
+                  <p>
+                    {' '}
+                    <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
+                  </p>
                   <h2>
                     <span>€{board.price}</span> / Day
                   </h2>
