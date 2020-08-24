@@ -35,15 +35,17 @@ boardRouter.get('/:id', (req, res, next) => {
 });
 
 boardRouter.post('/', upload.single('picture'), (req, res, next) => {
-  console.log(req.body, req.file);
   let url;
   if (req.file) {
     url = req.file.path;
+  } else {
+    url = '/logo.png';
   }
   Board.create({
     name: req.body.name,
     description: req.body.description,
     model: req.body.model,
+    owner: req.user._id,
     picture: url,
     size: req.body.size,
     level: req.body.level,
