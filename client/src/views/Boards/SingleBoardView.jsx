@@ -48,7 +48,7 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
-
+    console.log(board);
     return (
       <>
         <div className="single-board-view">
@@ -65,7 +65,7 @@ class SingleBoardView extends Component {
                   <h2>{board.size}'</h2>
                 </div>
                 <Link to={`/profile/${board.owner}`}>
-                  <em>by {board.owner}</em>
+                  <em>by {board.owner.name}</em>
                 </Link>
                 <p>{board.description}</p>
                 <div className="review-price">

@@ -16,6 +16,7 @@ const upload = multer({ storage });
 boardRouter.get('/list', (req, res, next) => {
   Board.find()
     .then(boards => {
+      console.log(boards);
       res.json({ boards });
     })
     .catch(error => {
@@ -26,7 +27,9 @@ boardRouter.get('/list', (req, res, next) => {
 boardRouter.get('/:id', (req, res, next) => {
   const id = req.params.id;
   Board.findById(id)
+    .populate('owner')
     .then(board => {
+      console.log(board);
       res.json({ board });
     })
     .catch(error => {

@@ -14,20 +14,23 @@ class UserProfileView extends Component {
   }
 
   componentDidMount() {
-    listBoards()
+    loadMe()
       .then(data => {
         this.setState({
-          boards: data.boards
+          user: data.user
         });
       })
       .catch(error => {
         console.log(error);
       });
 
-    loadMe()
+    listBoards()
       .then(data => {
+        const ownerBoards = data.boards.filter(
+          board => board.owner === this.state.user._id
+        );
         this.setState({
-          user: data.user,
+          boards: ownerBoards,
           loaded: true
         });
       })
@@ -46,7 +49,6 @@ class UserProfileView extends Component {
             <h2>{this.state.user.name}</h2>
             <h3>Your boards</h3>
             <div className="boards-list">
-              /// filter array based on owner?
               {this.state.boards.map(board => (
                 <BoardCard {...board} key={board._id} />
               ))}
