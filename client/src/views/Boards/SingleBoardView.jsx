@@ -122,7 +122,7 @@ class SingleBoardView extends Component {
                   inline
                 />
               </div>
-              <div className="buttons">
+              <div /* className="buttons" */>
                 <form onSubmit={this.handleOrderCreation} className="rent-link">
                   <button>Rent Board</button>
                 </form>

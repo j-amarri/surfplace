@@ -38,6 +38,20 @@ class UserProfileView extends Component {
       .catch(error => {
         console.log(error);
       });
+
+    // listOrders()
+    //   .then(data => {
+    //     const userOrders = data.orders.filter(
+    //       order => order.owner === this.state.user._id
+    //     );
+    //     this.setState({
+    //       orders: userOrders,
+    //       loaded: true
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   }
 
   render() {
@@ -54,6 +68,11 @@ class UserProfileView extends Component {
               ))}
             </div>
             <h3>Your orders</h3>
+            {/* <div className="order-list">
+              {this.state.orders.map(order => (
+                <BoardCard {...order} key={order._id} />
+              ))}
+            </div> */}
           </>
         )}
       </div>
