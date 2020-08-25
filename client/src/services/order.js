@@ -20,7 +20,6 @@ export const loadOrder = id => {
 
 export const listOrders = body => {
   return api.get('/order/list', body).then(res => {
-    //
-    return res.data.order;
+    return res.data;
   });
 };

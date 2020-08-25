@@ -9,6 +9,7 @@ class UserProfileView extends Component {
     this.state = {
       loaded: false,
       boards: [],
+      orders: [],
       user: null
     };
   }
@@ -52,6 +53,7 @@ class UserProfileView extends Component {
                 <BoardCard {...board} key={board._id} />
               ))}
             </div>
+            <h3>Your orders</h3>
           </>
         )}
       </div>
