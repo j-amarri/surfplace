@@ -25,8 +25,14 @@ const schema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: true
+  },
+  days: {
+    type: Number
+  },
+  paid: {
+    type: Boolean,
+    default: false
   }
-  // charge: String
 });
 
 module.exports = mongoose.model('Order', schema);
