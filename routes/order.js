@@ -18,6 +18,8 @@ orderRouter.post('/', (req, res, next) => {
 orderRouter.get('/:id', (req, res, next) => {
   const id = req.params.id;
   Order.findById(id)
+    .populate('product')
+    .populate('user')
     .then(order => {
       res.json({ order });
     })
@@ -31,6 +33,17 @@ orderRouter.delete('/:id', (req, res, next) => {
   Order.findByIdAndDelete(id)
     .then(() => {
       res.json({});
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+orderRouter.get('/list', (req, res, next) => {
+  Order.find()
+    .then(orders => {
+      console.log('hello');
+      res.json({ orders });
     })
     .catch(error => {
       next(error);

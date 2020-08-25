@@ -6,9 +6,21 @@ const api = axios.create({
 });
 
 export const createOrder = body => {
-  console.log('running');
   return api.post('/order', body).then(res => {
-    console.log('hey there', res.data);
     return res.data.newOrder;
+  });
+};
+
+export const loadOrder = id => {
+  return api.get(`/order/${id}`).then(res => {
+    console.log(res.data.order);
+    return res.data.order;
+  });
+};
+
+export const listOrders = body => {
+  return api.get('/order/list', body).then(res => {
+    //
+    return res.data.order;
   });
 };

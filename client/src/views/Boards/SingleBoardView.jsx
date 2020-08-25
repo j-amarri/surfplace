@@ -40,7 +40,6 @@ class SingleBoardView extends Component {
 
   handleOrderCreation = event => {
     event.preventDefault();
-    const id = this.props.match.params.id;
     // information from board, user ID, start/end date
     const product = this.state.board._id;
     const startDate = this.state.startDate;
@@ -48,7 +47,6 @@ class SingleBoardView extends Component {
     const user = this.props.user._id;
     const body = { product, startDate, endDate, user };
     createOrder(body).then(newOrder => {
-      console.log(newOrder);
       this.props.history.push(`/order/${newOrder._id}`);
     });
   };
