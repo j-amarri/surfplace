@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import MapContainer from './../../components/GoogleMap';
 
 const BoardCreationForm = props => {
   const handleFormSubmission = event => {
@@ -104,6 +105,10 @@ const BoardCreationForm = props => {
         name="picture"
         onChange={handlePictureInputChange}
       />
+
+      <div className="map">
+        <MapContainer />
+      </div>
 
       <button>Submit</button>
     </form>

@@ -7,6 +7,8 @@ import {
   InfoWindow
 } from 'react-google-maps';
 import Geocode from 'react-geocode';
+import AutoComplete from 'react-google-autocomplete';
+
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 
 class MapContainer extends Component {
@@ -27,6 +29,48 @@ class MapContainer extends Component {
         lng: 0
       }
     };
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.setState(
+          {
+            mapPosition: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            },
+            markerPosition: {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            }
+          },
+          () => {
+            Geocode.fromLatLng(
+              position.coords.latitude,
+              position.coords.longitude
+            ).then(
+              response => {
+                const address = response.results[0].formatted_address,
+                  addressArray = response.results[0].address_components;
+                const city = this.getCity(addressArray);
+                const state = this.getState(addressArray);
+                this.setState({
+                  address: address ? address : '',
+                  city: city ? city : '',
+                  state: state ? state : ''
+                });
+              },
+              error => {
+                console.log(error);
+              }
+            );
+          }
+        );
+      });
+    } else {
+      console.error('Geolocation is not supported by this browser!');
+    }
   }
 
   getCity = addressArray => {
@@ -87,6 +131,28 @@ class MapContainer extends Component {
     );
   };
 
+  onPlaceSelected = place => {
+    const address = place.formatted_address,
+      addressArray = place.address_components,
+      city = this.getCity(addressArray),
+      state = this.getState(addressArray),
+      latValue = place.geometry.location.lat(),
+      lngValue = place.geometry.location.lng();
+    this.setState({
+      address: address ? address : '',
+      city: city ? city : '',
+      state: state ? state : '',
+      markerPosition: {
+        lat: latValue,
+        lng: lngValue
+      },
+      mapPosition: {
+        lat: latValue,
+        lng: lngValue
+      }
+    });
+  };
+
   render() {
     const MapWithAMarker = withScriptjs(
       withGoogleMap(props => (
@@ -97,6 +163,17 @@ class MapContainer extends Component {
             lng: this.state.mapPosition.lng
           }}
         >
+          <AutoComplete
+            style={{
+              width: '100%',
+              height: '40px',
+              paddingLeft: 16,
+              marginTop: 2,
+              marginBottom: '2rem'
+            }}
+            onPlaceSelected={this.onPlaceSelected}
+            types={['address']}
+          />
           <Marker
             draggable={true}
             onDragEnd={this.onMarkerDragEnd}
