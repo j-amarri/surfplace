@@ -35,16 +35,16 @@ class CheckoutView extends Component {
     return (
       <div className="checkout-container">
         <div className="header-image">
-          <h1>Checkout</h1>
+          <h1>Your order</h1>
         </div>
         {this.state.loaded && (
           <>
-            <h4>Your order details</h4>
             <p>Board: {order.product.name}</p>
             <p>Model: {order.product.model}</p>
             <p>Price: {order.product.price}/day</p>
             <p>
-              Dates: from {order.startDate} to {order.endDate}
+              Dates: from {new Date(order.startDate).toLocaleDateString()} to{' '}
+              {new Date(order.endDate).toLocaleDateString()}
             </p>
             <h3>Total price: {order.total.amount}</h3>
             <form onSubmit={this.handleCheckout}>
