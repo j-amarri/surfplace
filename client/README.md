@@ -29,6 +29,8 @@ GET               ‘/board/:id’            -Board information
 DELETE            ‘/board/:id’            -Delete Board product listing
 PATCH             ‘/board/:id’            -Handle board editing form submission, send the edited board as JSON.
 POST              ‘/order’                -Handle order
+GET               '/order/:id'            -Retrieve information about the order
+GET               '/order/list'           -Retrieve information about all orders
 
 
 // Route handlers regarding authentication
