@@ -14,6 +14,9 @@ export const addBoard = body => {
 export const listBoards = () =>
   api.get('/board/list').then(response => response.data);
 
+export const boardBooked = id =>
+  api.get(`/board/booked/${id}`).then(response => response.data);
+
 export const loadBoard = id =>
   api.get(`/board/${id}`).then(response => response.data);
 
