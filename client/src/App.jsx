@@ -118,7 +118,7 @@ class App extends Component {
             />
             {/* // Booking views */}
             <ProtectedRoute
-              path="/checkout"
+              path="/order"
               render={props => <CheckOutView {...props} />}
               authorized={this.state.user}
               redirect="/sign-in"

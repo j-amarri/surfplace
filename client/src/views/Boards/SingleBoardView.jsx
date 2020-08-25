@@ -49,7 +49,7 @@ class SingleBoardView extends Component {
     const body = { product, startDate, endDate, user };
     createOrder(body).then(newOrder => {
       console.log(newOrder);
-      this.props.history.push(`/checkout/${newOrder._id}`);
+      this.props.history.push(`/order/${newOrder._id}`);
     });
   };
 
@@ -117,6 +117,12 @@ class SingleBoardView extends Component {
               </div>
               <div>
                 <p>Reviews</p>
+                <form action="/" method="post">
+                  <div>
+                    <textarea>Hey... say something!</textarea>
+                  </div>
+                  <input type="submit" value="Submit"></input>
+                </form>
               </div>
             </>
           )) || <p>Loading...</p>}
