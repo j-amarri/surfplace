@@ -126,14 +126,13 @@ class SingleBoardView extends Component {
                 <form onSubmit={this.handleOrderCreation} className="rent-link">
                   <button>Rent Board</button>
                 </form>
-                <Link
-                  to={`/board/${this.props.match.params.id}/edit`}
-                  className="edit-link"
-                >
-                  ✏️ Edit board
-                </Link>
+                <button className="edit-button">
+                  <Link to={`/board/${this.props.match.params.id}/edit`}>
+                    ✏️ Edit board
+                  </Link>
+                </button>
                 <form onSubmit={this.handleBoardDelete}>
-                  <button>🗑 Delete board</button>
+                  <button className="delete-button">🗑 Delete board</button>
                 </form>
               </div>
               <div>
@@ -142,7 +141,6 @@ class SingleBoardView extends Component {
                   <div>
                     <textarea>Hey... say something!</textarea>
                   </div>
-                  <input type="submit" value="Submit"></input>
                 </form>
               </div>
             </>

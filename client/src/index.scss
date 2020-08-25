@@ -1,5 +1,7 @@
 // Primary color: #267EF8
 // Secondary color: #FFCB00
+// Tertiary color: #00c6ae
+// red >> #F95A2C
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
@@ -26,7 +28,7 @@ code {
 }
 
 form * {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   margin: 10px auto;
@@ -34,10 +36,16 @@ form * {
 }
 
 button {
+  width: 90%;
   background-color: #ffcb00;
   color: black;
   padding: 10px;
-  border-radius: 10px;
+  padding: 1em 4.5em;
+  border-radius: 15px;
+  border: 2px solid #18191f;
+  box-shadow: 0px 4px 0px #18191f;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 /* HOME VIEW ALL BOARD LIST */
@@ -111,48 +119,12 @@ button {
   height: 200px;
 }
 
-.single-board-view button {
-  color: #18191f;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5em 3em;
-  margin-bottom: 0.5em;
-  border: none;
-  width: 100%;
+.edit-button {
+  background-color: #00c6ae;
 }
 
-.rent-link {
-  background-color: #ffbd12;
-  color: #18191f;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5em 4.5em;
-  border-radius: 15px;
-  border: 2px solid #18191f;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 0px #18191f;
-  border-radius: 16px;
-  margin-bottom: 1em;
-  font-size: 1.5em;
-}
-
-.edit-link {
-  background-color: white;
-  color: #18191f;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5em 3em;
-  margin-bottom: 0.5em;
-}
-
-.delete-link {
-  background-color: white;
-  color: #18191f;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5em 3em;
-  border-radius: 16px;
-  margin-bottom: 0.5em;
+.delete-button {
+  background-color: #f95a2c;
 }
 
 // Calendar
