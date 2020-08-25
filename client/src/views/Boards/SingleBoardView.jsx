@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { loadBoard, deleteBoard } from './../../services/board';
+import {
+  loadBoard,
+  deleteBoard,
+  listBoards,
+  boardBooked
+} from './../../services/board';
 import { createOrder } from './../../services/order';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
+import moment from 'moment';
 
 class SingleBoardView extends Component {
   constructor(props) {
@@ -13,23 +20,30 @@ class SingleBoardView extends Component {
       board: null,
       startDate: null,
       endDate: null,
-      availability: []
+      bookedDates: []
     };
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    let board = null;
     loadBoard(id)
       .then(data => {
-        const board = data.board;
-        this.setState({
-          board,
-          loaded: true
-        });
+        board = data.board;
+        return boardBooked(id);
+      })
+      .then(data => {
+        const bookedDates = data.booked.map(date => moment(date).toDate());
+        this.setState({ bookedDates, board, loaded: true });
       })
       .catch(error => {
         console.log(error);
       });
+
+    // call service to retrieve orders >>> listOrders()
+    // filter the order relevant to this board only
+    // extract booked dates
+    // push results into array
   }
 
   onChange = dates => {
@@ -65,7 +79,7 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
-    console.log(board);
+
     return (
       <>
         <div className="single-board-view">
@@ -102,7 +116,8 @@ class SingleBoardView extends Component {
                   onChange={this.onChange}
                   startDate={this.state.startDate}
                   endDate={this.state.endDate}
-                  excludeDates={[]}
+                  excludeDates={this.state.bookedDates}
+                  //excludeDates={['2020-08-02T16:42:33.647+00:00']}
                   selectsRange
                   inline
                 />
