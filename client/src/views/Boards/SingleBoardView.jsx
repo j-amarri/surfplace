@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadBoard, deleteBoard } from './../../services/board';
 import { createOrder } from './../../services/order';
-import { RangeDatePicker } from '@y0c/react-datepicker';
-import '@y0c/react-datepicker/assets/styles/calendar.scss';
-import 'moment/locale/ko';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class SingleBoardView extends Component {
   constructor(props) {
@@ -13,7 +12,8 @@ class SingleBoardView extends Component {
       loaded: false,
       board: null,
       startDate: null,
-      endDate: null
+      endDate: null,
+      availability: []
     };
   }
 
@@ -32,10 +32,9 @@ class SingleBoardView extends Component {
       });
   }
 
-  onChange = (...data) => {
-    const startDate = data[0];
-    const endDate = data[1];
-    this.setState({ startDate, endDate });
+  onChange = dates => {
+    const [start, end] = dates;
+    this.setState({ startDate: start, endDate: end });
   };
 
   handleOrderCreation = event => {
@@ -68,6 +67,7 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
+    console.log(board);
     return (
       <>
         <div className="single-board-view">
@@ -99,7 +99,15 @@ class SingleBoardView extends Component {
               </div>
               <div className="booking-calendar">
                 <p>Choose date(s)</p>
-                <RangeDatePicker locale="ko" onChange={this.onChange} />
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.onChange}
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  excludeDates={[]}
+                  selectsRange
+                  inline
+                />
               </div>
               <div className="buttons">
                 <form onSubmit={this.handleOrderCreation} className="rent-link">
