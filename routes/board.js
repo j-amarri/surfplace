@@ -32,7 +32,6 @@ boardRouter.get('/booked/:id', (req, res, next) => {
               .toDate()
           );
         }
-        console.log(range);
         return [...acc, ...range];
       }, []);
       res.json({ booked });

@@ -13,7 +13,6 @@ class CheckoutView extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-
     loadOrder(id)
       .then(data => {
         console.log('component', data);
@@ -28,11 +27,11 @@ class CheckoutView extends Component {
   }
 
   handleCheckout = () => {
-    console.log('checking out');
     this.props.history.push(`/confirmation`);
   };
 
   render() {
+    const order = this.state.order;
     return (
       <div className="checkout-container">
         {this.state.loaded && (
@@ -40,28 +39,26 @@ class CheckoutView extends Component {
             <h1>Rent your board</h1>
             <h4>
               <strong>Board name:</strong>
-              {this.state.order.product.name}
+              {order.product.name}
             </h4>
             <h4>
               <strong>Board model:</strong>
-              {this.state.order.product.model}
+              {order.product.model}
             </h4>
             <h4>
               <strong>Price per day:</strong>
-              {this.state.order.product.price}
+              {order.product.price}
             </h4>
             <h4>
               <strong>Starting date:</strong>
-              {this.state.order.startDate}
+              {order.startDate}
             </h4>
             <h4>
               <strong>End date:</strong>
-              {this.state.order.endDate}
+              {order.endDate}
             </h4>
-            <h4>
-              Number of days:{' '}
-              {this.state.order.endDate - this.state.order.startDate}
-            </h4>
+            <h4>Days: {order.days}</h4>
+            <h4>Price: {order.total.amount}</h4>
             <form onSubmit={this.handleCheckout} className="rent-link">
               <button>Rent Board</button>
             </form>

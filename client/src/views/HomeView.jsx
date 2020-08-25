@@ -91,7 +91,7 @@ class HomeView extends Component {
             </select>
           </div>
         </div>
-        <SizeSlider />
+        {/* <SizeSlider /> */}
         <div className="boards-list">
           {boardsToShow.map(board => (
             <BoardCard {...board} key={board._id} />
