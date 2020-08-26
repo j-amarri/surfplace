@@ -19,7 +19,7 @@ const schema = new mongoose.Schema({
     required: true
   },
   size: {
-    type: String,
+    type: Number,
     required: true
   },
   level: {
@@ -59,7 +59,6 @@ const schema = new mongoose.Schema({
       type: String,
       enum: ['EUR', 'USD']
     }
-    // required: true
   }
 });
 

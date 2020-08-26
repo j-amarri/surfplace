@@ -79,6 +79,10 @@ class SingleBoardView extends Component {
 
   render() {
     const board = this.state.board;
+    if (board) {
+      console.log(board.owner._id);
+      console.log(this.props.user._id);
+    }
 
     return (
       <>
@@ -93,7 +97,7 @@ class SingleBoardView extends Component {
               <div className="single-board-details">
                 <div>
                   <h1>{board.name}</h1>
-                  <h2>{board.size}'</h2>
+                  <h2>{board.size}"</h2>
                 </div>
                 <Link to={`/profile/${board.owner._id}`}>
                   <em>by {board.owner.name}</em>
@@ -105,7 +109,7 @@ class SingleBoardView extends Component {
                     <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
                   </p>
                   <h2>
-                    <span>€{board.price}</span> / Day
+                    <span>€{board.price.amount}</span> / Day
                   </h2>
                 </div>
               </div>
@@ -122,18 +126,22 @@ class SingleBoardView extends Component {
                   inline
                 />
               </div>
-              <div /* className="buttons" */>
+              <div>
                 <form onSubmit={this.handleOrderCreation} className="rent-link">
                   <button>Rent Board</button>
                 </form>
-                <button className="edit-button">
-                  <Link to={`/board/${this.props.match.params.id}/edit`}>
-                    ✏️ Edit board
-                  </Link>
-                </button>
-                <form onSubmit={this.handleBoardDelete}>
-                  <button className="delete-button">🗑 Delete board</button>
-                </form>
+                {this.props.user._id === board.owner._id && (
+                  <>
+                    <button className="edit-button">
+                      <Link to={`/board/${this.props.match.params.id}/edit`}>
+                        ✏️ Edit board
+                      </Link>
+                    </button>
+                    <form onSubmit={this.handleBoardDelete}>
+                      <button className="delete-button">🗑 Delete board</button>
+                    </form>
+                  </>
+                )}
               </div>
               <div>
                 <p>Reviews</p>
