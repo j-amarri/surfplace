@@ -12,8 +12,8 @@ import AutoComplete from 'react-google-autocomplete';
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 
 class MapContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       address: '',
       city: '',
@@ -54,11 +54,9 @@ class MapContainer extends Component {
                 const address = response.results[0].formatted_address,
                   addressArray = response.results[0].address_components;
                 const city = this.getCity(addressArray);
-                const state = this.getState(addressArray);
                 this.setState({
                   address: address ? address : '',
-                  city: city ? city : '',
-                  state: state ? state : ''
+                  city: city ? city : ''
                 });
               },
               error => {
@@ -86,19 +84,6 @@ class MapContainer extends Component {
     }
   };
 
-  getState = addressArray => {
-    let state = '';
-    for (let i = 0; i < addressArray.length; i++) {
-      if (
-        addressArray[i].types[0] &&
-        'administrative_area_level_1' === addressArray[i].types[0]
-      ) {
-        state = addressArray[i].long_name;
-        return state;
-      }
-    }
-  };
-
   onMarkerDragEnd = event => {
     let newLat = event.latLng.lat();
     let newLng = event.latLng.lng();
@@ -109,12 +94,10 @@ class MapContainer extends Component {
         const address = response.results[0].formatted_address,
           addressArray = response.results[0].address_components;
         const city = this.getCity(addressArray);
-        const state = this.getState(addressArray);
 
         this.setState({
           address: address ? address : '',
           city: city ? city : '',
-          state: state ? state : '',
           markerPosition: {
             lat: newLat,
             lng: newLng
@@ -135,13 +118,11 @@ class MapContainer extends Component {
     const address = place.formatted_address,
       addressArray = place.address_components,
       city = this.getCity(addressArray),
-      state = this.getState(addressArray),
       latValue = place.geometry.location.lat(),
       lngValue = place.geometry.location.lng();
     this.setState({
       address: address ? address : '',
       city: city ? city : '',
-      state: state ? state : '',
       markerPosition: {
         lat: latValue,
         lng: lngValue
@@ -166,7 +147,7 @@ class MapContainer extends Component {
           <AutoComplete
             style={{
               width: '100%',
-              height: '40px',
+              height: '50px',
               paddingLeft: 16,
               marginTop: 2,
               marginBottom: '2rem'
@@ -177,6 +158,11 @@ class MapContainer extends Component {
           <Marker
             draggable={true}
             onDragEnd={this.onMarkerDragEnd}
+            onChange={
+              this.props.getUserLocation
+                ? this.props.getUserLocation(this.state.markerPosition)
+                : ''
+            }
             position={{
               lat: this.state.markerPosition.lat,
               lng: this.state.markerPosition.lng

@@ -43,6 +43,10 @@ const BoardCreationForm = props => {
     props.onPriceChange(price);
   };
 
+  const getUserLocation = location => {
+    props.onLocationChange(location);
+  };
+
   return (
     <form onSubmit={handleFormSubmission}>
       <label htmlFor="input-name">Name</label>
@@ -107,7 +111,7 @@ const BoardCreationForm = props => {
       />
 
       <div className="map">
-        <MapContainer />
+        <MapContainer getUserLocation={getUserLocation} />
       </div>
 
       <button>Submit</button>
