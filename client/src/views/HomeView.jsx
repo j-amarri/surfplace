@@ -60,7 +60,7 @@ class HomeView extends Component {
         <div className="map-link">
           <a href="/map">🗺 Map</a>
         </div>
-        <div className="filter">
+        <div className="filter-options">
           <div className="filter-dropdown">
             <select
               name="filter-level"

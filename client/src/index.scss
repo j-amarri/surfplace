@@ -36,7 +36,8 @@ form * {
 }
 
 button {
-  width: 90%;
+  //width: 90%;
+  text-align: center;
   background-color: #ffcb00;
   color: black;
   padding: 10px;
@@ -121,10 +122,23 @@ button {
 
 .edit-button {
   background-color: #00c6ae;
+  width: 90%;
 }
 
 .delete-button {
   background-color: #f95a2c;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  select {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 20px;
+    padding: 5px;
+  }
 }
 
 // Calendar
