@@ -109,7 +109,7 @@ class AddBoardView extends Component {
   render() {
     return (
       <div>
-        <h1>BOARD CREATION VIEW</h1>
+        <h1>Host your board</h1>
         <BoardCreationForm
           name={this.state.name}
           description={this.state.description}
@@ -117,7 +117,7 @@ class AddBoardView extends Component {
           picture={this.state.picture}
           size={this.state.size}
           level={this.state.level}
-          //price={this.state.price.amount}
+          price={this.state.price}
           onNameChange={this.handleBoardNameChange}
           onDescriptionChange={this.handleBoardDescriptionChange}
           onModelChange={this.handleBoardModelChange}

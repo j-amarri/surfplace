@@ -56,7 +56,7 @@ const BoardCreationForm = props => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
+    <form className="board-form" onSubmit={handleFormSubmission}>
       <label htmlFor="input-name">Name</label>
       <input
         type="text"
@@ -117,17 +117,10 @@ const BoardCreationForm = props => {
       <input
         type="number"
         name="price"
-        //value={props.price.amount}
+        value={props.price}
         onChange={handlePriceInputChange}
         required
       />
-
-      <label htmlFor="input-location">Where is the board located?</label>
-      <input type="text" name="latitude" />
-      <input type="text" name="longitutde" />
-      <div className="map">
-        <Map getUserLocation={getUserLocation} />
-      </div>
 
       <label htmlFor="input-picture">Picture</label>
       <input
@@ -137,6 +130,14 @@ const BoardCreationForm = props => {
         //value={props.picture}
         onChange={handlePictureInputChange}
       />
+
+      <label htmlFor="input-location">Where is the board located?</label>
+      <input type="text" name="latitude" />
+      <input type="text" name="longitutde" />
+      <div className="map">
+        <Map getUserLocation={getUserLocation} />
+      </div>
+
       <button>Submit</button>
     </form>
   );
