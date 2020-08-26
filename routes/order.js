@@ -64,6 +64,9 @@ orderRouter.post('/', (req, res, next) => {
 
 orderRouter.get('/list', (req, res, next) => {
   Order.find()
+    .populate('product')
+    .populate('user')
+    .populate('owner')
     .then(orders => {
       console.log('hello');
       console.log(orders);
