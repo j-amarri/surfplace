@@ -19,7 +19,7 @@ class HomeView extends Component {
   componentDidMount() {
     listBoards()
       .then(data => {
-        const boards = data.boards;
+        const boards = data;
         this.setState({
           boards,
           loaded: true

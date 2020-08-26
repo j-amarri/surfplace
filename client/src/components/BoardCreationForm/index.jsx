@@ -61,6 +61,7 @@ const BoardCreationForm = props => {
       <input
         type="text"
         name="name"
+        value={props.name}
         onChange={handleNameInputChange}
         required
       />
@@ -76,7 +77,12 @@ const BoardCreationForm = props => {
       />
 
       <label htmlFor="input-model">Board model</label>
-      <select name="model" onChange={handleModelInputChange} required>
+      <select
+        name="model"
+        onChange={handleModelInputChange}
+        value={props.model}
+        required
+      >
         <option value="">Select a model</option>
         <option value="Fish">Fish</option>
         <option value="Shortboard">Shortboard</option>
@@ -91,11 +97,16 @@ const BoardCreationForm = props => {
         type="number"
         name="size"
         onChange={handleSizeInputChange}
+        value={props.size}
         required
       />
 
       <label htmlFor="input-level">Skill Level</label>
-      <select name="level" onChange={handleLevelInputChange}>
+      <select
+        name="level"
+        onChange={handleLevelInputChange}
+        value={props.level}
+      >
         <option value="All levels">All levels</option>
         <option value="Beginner">Beginner</option>
         <option value="Intermediate">Intermediate</option>
@@ -106,6 +117,7 @@ const BoardCreationForm = props => {
       <input
         type="number"
         name="price"
+        //value={props.price.amount}
         onChange={handlePriceInputChange}
         required
       />
@@ -120,6 +132,7 @@ const BoardCreationForm = props => {
         id="input-picture"
         type="file"
         name="picture"
+        //value={props.picture}
         onChange={handlePictureInputChange}
       />
       <button>Submit</button>

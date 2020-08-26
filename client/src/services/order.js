@@ -18,8 +18,8 @@ export const loadOrder = id => {
   });
 };
 
-export const listOrders = body => {
-  return api.get('/order/list', body).then(res => {
+export const listOrders = () => {
+  return api.get('/order/list').then(res => {
     return res.data;
   });
 };

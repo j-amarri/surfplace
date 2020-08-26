@@ -12,7 +12,7 @@ export const addBoard = body => {
 };
 
 export const listBoards = () =>
-  api.get('/board/list').then(response => response.data);
+  api.get('/board/list').then(response => response.data.boards);
 
 export const boardBooked = id =>
   api.get(`/board/booked/${id}`).then(response => response.data);
