@@ -37,58 +37,57 @@ class AuthenticationSignUpView extends Component {
 
   render() {
     return (
-      <div className="sign-up">
+      <div className="auth-form">
         <div>
           <h1>Sign Up</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo</p>
+          <p>
+            Welcome to Surfplace! Create your account, we only need few
+            information.
+          </p>
         </div>
         <form onSubmit={this.handleFormSubmission}>
-          <label htmlFor="input-name">Full Name</label>
           <input
             id="input-name"
             type="text"
             name="name"
-            placeholder="Full Name"
+            placeholder="Your name"
             value={this.state.name}
             onChange={this.handleInputChange}
           />
 
-          <label htmlFor="input-email">Email</label>
           <input
             id="input-email"
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Your email"
             value={this.state.email}
             onChange={this.handleInputChange}
           />
 
-          <label htmlFor="input-password">Password</label>
           <input
             id="input-password"
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Your password"
             value={this.state.password}
             onChange={this.handleInputChange}
           />
 
-          <label htmlFor="input-level">Level</label>
           <select name="level" onChange={this.handleInputChange} required>
-            <option value="">Select a level</option>
+            <option value="">What is your level?</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
             <option value="Advanced">Advanced</option>
             <option value="Professional">Professional</option>
           </select>
 
-          <label htmlFor="input-picture">Profile Picture</label>
+          {/* <label htmlFor="input-picture">Profile Picture</label>
           <input
             id="input-picture"
             type="file"
             name="picture"
             onChange={this.handleInputChange}
-          />
+          /> */}
 
           <button>Sign Up</button>
         </form>

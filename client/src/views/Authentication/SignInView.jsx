@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signIn } from './../../services/authentication';
+import './style.scss';
 
 class AuthenticationSignInView extends Component {
   constructor() {
@@ -37,9 +38,9 @@ class AuthenticationSignInView extends Component {
 
   render() {
     return (
-      <div className="sign-in-container">
-        <img width="175px" src="/logo.png" alt="logo" />
-        <h2>Login</h2>
+      <div className="auth-form">
+        {/* <img width="175px" src="/logo.png" alt="logo" /> */}
+        <h1>Sign In</h1>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor="input-email"></label>
           <input

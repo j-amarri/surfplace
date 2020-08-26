@@ -1,26 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
 
-.sign-in-container {
-  margin-top: 3em;
+// .sign-in-container {
+//   margin-top: 3em;
 
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 30px;
-  }
+//   h2 {
+//     font-family: 'Montserrat', sans-serif;
+//     font-weight: 800;
+//     font-size: 30px;
+//   }
 
-  button {
-    background-color: black;
-  }
-}
+//   button {
+//     background-color: black;
+//   }
+// }
 
-.sign-up {
+.auth-form {
   text-align: left;
   margin-top: 2em;
   margin-left: 2em;
 
   p {
+    width: 90%;
     font-size: 1.2em;
   }
 
@@ -35,10 +36,11 @@
 
   select {
     line-height: 1em;
-    padding-left: 1em;
+    padding: 1em;
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
     margin-left: 0;
+    border: 2px solid black;
     border-radius: 15px;
   }
 
