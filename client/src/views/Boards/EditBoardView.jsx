@@ -111,30 +111,41 @@ class EditBoardView extends Component {
     });
   };
 
+  onLocationChange = location => {
+    if (this.state.latitude !== location.lat) {
+      this.setState({
+        latitude: location.lat,
+        longitude: location.lng
+      });
+    }
+  };
+
   render() {
     return (
       <div>
-        <h1>Edit Board</h1>
-        <BoardCreationForm
-          name={this.state.name}
-          description={this.state.description}
-          model={this.state.model}
-          picture={this.state.picture}
-          size={this.state.size}
-          level={this.state.level}
-          price={this.state.price}
-          onNameChange={this.handleBoardNameChange}
-          onDescriptionChange={this.handleBoardDescriptionChange}
-          onModelChange={this.handleBoardModelChange}
-          onPictureChange={this.handlePictureChange}
-          onSizeChange={this.handleBoardSizeChange}
-          onLevelChange={this.handleBoardLevelChange}
-          onPriceChange={this.handleBoardPriceChange}
-          onFormSubmission={this.handleBoardEdit}
-        />
-        <form onSubmit={this.handleBoardDelete}>
-          <button>Detele Board</button>
-        </form>
+        {this.state.loaded && (
+          <>
+            <h1>Edit Board</h1>
+            <BoardCreationForm
+              name={this.state.name}
+              description={this.state.description}
+              model={this.state.model}
+              // picture={this.state.picture}
+              size={this.state.size}
+              level={this.state.level}
+              price={this.state.price.amount}
+              onNameChange={this.handleBoardNameChange}
+              onDescriptionChange={this.handleBoardDescriptionChange}
+              onModelChange={this.handleBoardModelChange}
+              onPictureChange={this.handlePictureChange}
+              onSizeChange={this.handleBoardSizeChange}
+              onLevelChange={this.handleBoardLevelChange}
+              onLocationChange={this.onLocationChange}
+              onPriceChange={this.handleBoardPriceChange}
+              onFormSubmission={this.handleBoardEdit}
+            />
+          </>
+        )}
       </div>
     );
   }

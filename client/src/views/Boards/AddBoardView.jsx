@@ -117,7 +117,7 @@ class AddBoardView extends Component {
           picture={this.state.picture}
           size={this.state.size}
           level={this.state.level}
-          price={this.state.price}
+          //price={this.state.price.amount}
           onNameChange={this.handleBoardNameChange}
           onDescriptionChange={this.handleBoardDescriptionChange}
           onModelChange={this.handleBoardModelChange}
