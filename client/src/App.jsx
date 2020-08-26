@@ -12,6 +12,8 @@ import HomeView from './views/HomeView';
 import MapView from './views/MapView';
 import WelcomeView from './views/WelcomeView';
 import ErrorView from './views/ErrorView';
+import ChatView from './views/ChatView';
+import SurfConditionsView from './views/SurfConditionsView';
 
 // Authentication views
 import SignInView from './views/Authentication/SignInView';
@@ -29,6 +31,7 @@ import ConfirmationView from './views/Booking/ConfirmationView';
 // Profile views
 import UserProfileView from './views/Profile/UserProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
+import SurfConditions from './views/SurfConditionsView';
 
 class App extends Component {
   constructor() {
@@ -79,6 +82,8 @@ class App extends Component {
             <Route path="/" component={HomeView} exact />
             <Route path="/map" component={MapView} />
             <Route path="/welcome" component={WelcomeView} />
+            <Route path="/chat" component={ChatView} />
+            <Route path="/surf-conditions" component={SurfConditionsView} />
             <Route path="/error" component={ErrorView} />
             {/* // Auth views */}
             <ProtectedRoute
