@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { loadMe } from './../../services/authentication';
 import { listBoards } from './../../services/board';
 import { listOrders } from './../../services/order';
@@ -20,16 +21,20 @@ class UserProfileView extends Component {
     const boards = await listBoards();
     const ownerBoards = boards.filter(board => board.owner === user.user._id);
     const orders = await listOrders();
+    const ownerOrders = orders.orders.filter(
+      order => order.owner === user.user_id
+    );
     this.setState({
       user: user.user,
       boards: ownerBoards,
       loaded: true,
-      orders
+      orders: ownerOrders
     });
   };
 
   componentDidMount() {
     this.fetchData();
+    console.log(this.state);
     // loadMe()
     //   .then(data => {
     //     this.setState({
@@ -69,6 +74,9 @@ class UserProfileView extends Component {
   }
 
   render() {
+    if (this.state.loaded) {
+      console.log(this.state.orders);
+    }
     return (
       <div>
         {this.state.loaded && (
@@ -82,11 +90,18 @@ class UserProfileView extends Component {
               ))}
             </div>
             <h3>Your orders</h3>
-            {/* <div className="order-list">
+            <div className="orders-list">
               {this.state.orders.map(order => (
-                <BoardCard {...order} key={order._id} />
+                <div className="order-card">
+                  <p>{order.product.name}</p>
+                  <p>{new Date(order.startDate).toLocaleDateString()}</p>
+                  {/* <Link to={`/profile/${order.product.owner}`}>
+                    <em>by {order.product.owner}</em>
+                  </Link> */}
+                  <p>{order.total.amount}€</p>
+                </div>
               ))}
-            </div> */}
+            </div>
           </>
         )}
       </div>
