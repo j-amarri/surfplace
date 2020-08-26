@@ -2,18 +2,19 @@ import React from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 
-const BoardCard = ({ name, price, size, model, level, picture, _id }) => {
+const BoardCard = board => {
+  console.log(board);
   return (
     <div className="board-card">
-      <Link to={`/board/${_id}`}>
-        <img src={picture} alt="" />
+      <Link to={`/board/${board._id}`}>
+        <img src={board.picture} alt="" />
       </Link>
       <div className="board-card-details">
-        <h3>{name}</h3>
-        <p>€{price}/day</p>
+        <h3>{board.name}</h3>
+        <p>€{board.price.amount}/day</p>
         <div className="size-model">
-          <p>{size}"</p>
-          <p>{model}</p>
+          <p>{board.size}"</p>
+          <p>{board.model}</p>
         </div>
       </div>
     </div>

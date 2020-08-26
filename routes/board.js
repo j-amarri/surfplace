@@ -70,6 +70,7 @@ boardRouter.post('/', upload.single('picture'), (req, res, next) => {
   } else {
     url = '/logo.png';
   }
+  console.log(req.body.price);
   Board.create({
     name: req.body.name,
     description: req.body.description,
@@ -78,7 +79,10 @@ boardRouter.post('/', upload.single('picture'), (req, res, next) => {
     picture: url,
     size: req.body.size,
     level: req.body.level,
-    price: req.body.price
+    price: {
+      amount: req.body.price,
+      currency: 'EUR'
+    }
   })
     .then(board => res.json({ board }))
     .catch(error => {

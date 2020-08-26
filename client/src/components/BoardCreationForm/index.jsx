@@ -29,7 +29,7 @@ const BoardCreationForm = props => {
   };
 
   const handleSizeInputChange = event => {
-    const size = event.target.value;
+    const size = Number(event.target.value);
     props.onSizeChange(size);
   };
 
@@ -39,7 +39,7 @@ const BoardCreationForm = props => {
   };
 
   const handlePriceInputChange = event => {
-    const price = event.target.value;
+    const price = Number(event.target.value);
     props.onPriceChange(price);
   };
 
@@ -76,7 +76,7 @@ const BoardCreationForm = props => {
 
       <label htmlFor="input-size">Board Size</label>
       <input
-        type="text"
+        type="number"
         name="size"
         onChange={handleSizeInputChange}
         required
@@ -92,7 +92,7 @@ const BoardCreationForm = props => {
 
       <label htmlFor="input-price">Price</label>
       <input
-        type="text"
+        type="number"
         name="price"
         onChange={handlePriceInputChange}
         required
@@ -106,9 +106,9 @@ const BoardCreationForm = props => {
         onChange={handlePictureInputChange}
       />
 
-      <div className="map">
+      {/* <div className="map">
         <MapContainer />
-      </div>
+      </div> */}
 
       <button>Submit</button>
     </form>

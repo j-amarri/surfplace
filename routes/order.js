@@ -17,8 +17,7 @@ orderRouter.post('/', (req, res, next) => {
 
   Board.findById(product)
     .then(data => {
-      const pricePerDay = parseInt(data.price);
-      const amount = pricePerDay * days;
+      const amount = data.price.amount * days;
       const currency = 'EUR';
       total = {
         amount,

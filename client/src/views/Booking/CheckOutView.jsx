@@ -41,12 +41,12 @@ class CheckoutView extends Component {
           <>
             <p>Board: {order.product.name}</p>
             <p>Model: {order.product.model}</p>
-            <p>Price: {order.product.price}/day</p>
+            <p>Price: {order.product.price.amount}/day</p>
             <p>
               Dates: from {new Date(order.startDate).toLocaleDateString()} to{' '}
               {new Date(order.endDate).toLocaleDateString()}
             </p>
-            <h3>Total price: {order.total.amount}</h3>
+            <h3>Total price: {order.total.amount}€</h3>
             <form onSubmit={this.handleCheckout}>
               <button className="checkout-button">Checkout</button>
             </form>
