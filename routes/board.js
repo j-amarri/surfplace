@@ -78,7 +78,10 @@ boardRouter.post('/', upload.single('picture'), (req, res, next) => {
     picture: url,
     size: req.body.size,
     level: req.body.level,
-    price: req.body.price
+    price: req.body.price,
+    location: {
+      coordinates: [req.body.longitude, req.body.latitude]
+    }
   })
     .then(board => res.json({ board }))
     .catch(error => {

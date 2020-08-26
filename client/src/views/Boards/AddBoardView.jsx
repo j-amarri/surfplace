@@ -13,7 +13,9 @@ class AddBoardView extends Component {
       picture: '/board-placeholder.jpg',
       size: '',
       level: 'All levels',
-      price: ''
+      price: '',
+      latitude: '',
+      longitude: ''
     };
   }
 
@@ -25,8 +27,20 @@ class AddBoardView extends Component {
     const size = this.state.size;
     const level = this.state.level;
     const price = this.state.price;
+    const latitude = this.state.latitude;
+    const longitude = this.state.longitude;
 
-    const body = { name, description, model, picture, size, level, price };
+    const body = {
+      name,
+      description,
+      model,
+      picture,
+      size,
+      level,
+      price,
+      latitude,
+      longitude
+    };
 
     addBoard(body)
       .then(data => {
@@ -81,6 +95,17 @@ class AddBoardView extends Component {
     });
   };
 
+  onLocationChange = location => {
+    console.log(location);
+
+    if (this.state.latitude !== location.lat) {
+      this.setState({
+        latitude: location.lat,
+        longitude: location.lng
+      });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -100,6 +125,7 @@ class AddBoardView extends Component {
           onSizeChange={this.handleBoardSizeChange}
           onLevelChange={this.handleBoardLevelChange}
           onPriceChange={this.handleBoardPriceChange}
+          onLocationChange={this.onLocationChange}
           onFormSubmission={this.handleBoardCreation}
         />
       </div>
