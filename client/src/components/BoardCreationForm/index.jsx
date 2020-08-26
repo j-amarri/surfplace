@@ -67,6 +67,19 @@ const BoardCreationForm = props => {
     props.onLocationChange(location);
   };
 
+  // const handleMapClick = event => {
+  //   const { lng, lat } = event;
+  //   const marker = {
+  //     lng,
+  //     lat
+  //   };
+  //   this.setState({
+  //     lng,
+  //     lat,
+  //     markers: [marker]
+  //   });
+  // };
+
   return (
     <form className="board-form" onSubmit={handleFormSubmission}>
       <label htmlFor="input-name">Name</label>
@@ -144,11 +157,25 @@ const BoardCreationForm = props => {
       />
 
       <label htmlFor="input-location">Where is the board located?</label>
-      <input type="text" name="latitude" onChange={handleLatitudeChange} />
-      <input type="text" name="longitude" onChange={handleLongitudeChange} />
-      <div className="map">
+      <input
+        type="text"
+        name="latitude"
+        placeholder="Latitude"
+        onChange={handleLatitudeChange}
+      />
+      <input
+        type="text"
+        name="longitude"
+        placeholder="Longitude"
+        onChange={handleLongitudeChange}
+      />
+      {/* <div className="map">
         <Map getUserLocation={getUserLocation} />
-      </div>
+      </div> */}
+
+      {/* <div id="map">
+          <Map markers={this.state.markers} coordinates={this.props.coordinates} handleClick={handleMapClick} />
+      </div> */}
 
       <button>Submit</button>
     </form>

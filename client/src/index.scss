@@ -119,14 +119,6 @@ button {
   }
 }
 
-.map {
-  width: 100%;
-
-  .gm-style-mtc {
-    display: none;
-  }
-}
-
 // Calendar
 
 // Profile page & orders
@@ -152,4 +144,11 @@ button {
     padding: 20px;
     margin: 0;
   }
+}
+
+.map {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
