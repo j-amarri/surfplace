@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapContainer from '../components/GoogleMap';
+import MapContainer from '../components/GoogleMap/index';
 import { Link } from 'react-router-dom';
 import './WelcomeView.scss';
 

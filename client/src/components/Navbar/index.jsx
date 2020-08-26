@@ -11,16 +11,17 @@ const Navbar = props => {
         </a>
 
         <Link className="nav-link" to="/board/add">
-          Add A Board
+          Host Board
         </Link>
         {(props.user && (
           <>
+            {/* <button onClick={props.onSignOut}>Sign Out</button> */}
             <Link className="nav-link" to={`/profile/${props.user._id}`}>
-              <span>{props.user.name}</span>
+              <img
+                src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                alt={props.user.name}
+              />
             </Link>
-            <button className="sign-out-button" onClick={props.onSignOut}>
-              Sign Out
-            </button>
           </>
         )) || (
           <>

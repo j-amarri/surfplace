@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import MapContainer from './../../components/GoogleMap';
+import MapContainer from '../GoogleMap';
 
 const BoardCreationForm = props => {
   const handleFormSubmission = event => {
@@ -9,36 +9,44 @@ const BoardCreationForm = props => {
   };
 
   const handleNameInputChange = event => {
+    event.preventDefault();
     const name = event.target.value;
+
     props.onNameChange(name);
   };
 
   const handleDescriptionInputChange = event => {
+    event.preventDefault();
     const description = event.target.value;
     props.onDescriptionChange(description);
   };
 
   const handleModelInputChange = event => {
+    event.preventDefault();
     const model = event.target.value;
     props.onModelChange(model);
   };
 
   const handlePictureInputChange = event => {
+    event.preventDefault();
     const file = event.target.files[0];
     props.onPictureChange(file);
   };
 
   const handleSizeInputChange = event => {
+    event.preventDefault();
     const size = Number(event.target.value);
     props.onSizeChange(size);
   };
 
   const handleLevelInputChange = event => {
+    event.preventDefault();
     const level = event.target.value;
     props.onLevelChange(level);
   };
 
   const handlePriceInputChange = event => {
+    event.preventDefault();
     const price = Number(event.target.value);
     props.onPriceChange(price);
   };
@@ -102,6 +110,11 @@ const BoardCreationForm = props => {
         required
       />
 
+      <label htmlFor="input-location">Where is the board located?</label>
+      <div className="map">
+        <MapContainer getUserLocation={getUserLocation} />
+      </div>
+
       <label htmlFor="input-picture">Picture</label>
       <input
         id="input-picture"
@@ -109,11 +122,6 @@ const BoardCreationForm = props => {
         name="picture"
         onChange={handlePictureInputChange}
       />
-
-      <div className="map">
-        <MapContainer getUserLocation={getUserLocation} />
-      </div>
-
       <button>Submit</button>
     </form>
   );
