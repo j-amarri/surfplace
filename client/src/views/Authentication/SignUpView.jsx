@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { signUp } from './../../services/authentication';
+import './style.scss';
 
 class AuthenticationSignUpView extends Component {
   constructor(props) {
@@ -36,7 +37,11 @@ class AuthenticationSignUpView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="sign-up">
+        <div>
+          <h1>Sign Up</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo</p>
+        </div>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor="input-name">Full Name</label>
           <input

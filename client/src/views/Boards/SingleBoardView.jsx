@@ -9,6 +9,7 @@ import {
 import { createOrder } from './../../services/order';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './SingleBoardView.scss';
 
 import moment from 'moment';
 
@@ -89,30 +90,38 @@ class SingleBoardView extends Component {
         <div className="single-board-view">
           {(this.state.loaded && (
             <>
+              <div className="single-header">
+                <h1>{board.name}</h1>
+              </div>
               <div className="single-board-image">
                 {board.picture && (
                   <img src={board.picture} alt={board.name} width="100%" />
                 )}
               </div>
-              <div className="single-board-details">
-                <div>
-                  <h1>{board.name}</h1>
-                  <h2>{board.size}"</h2>
-                </div>
-                <Link to={`/profile/${board.owner._id}`}>
-                  <em>by {board.owner.name}</em>
-                </Link>
+              <div className="description">
+                <h5>Description</h5>
                 <p>{board.description}</p>
-                <div className="review-price">
-                  <p>
-                    {' '}
-                    <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
-                  </p>
-                  <h2>
-                    <span>€{board.price.amount}</span> / Day
-                  </h2>
-                </div>
               </div>
+
+              <div className="description">
+                <h5>Owner</h5>
+                <Link to={`/profile/${board.owner._id}`}>
+                  <em>{board.owner.name}</em>
+                </Link>
+              </div>
+
+              <div className="reviews">
+                <p>
+                  <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
+                </p>
+              </div>
+
+              <h2>{board.size}"</h2>
+
+              <h2>
+                <span>€{board.price.amount}</span> / Day
+              </h2>
+
               <div className="booking-calendar">
                 <p>Choose date(s)</p>
                 <DatePicker
@@ -142,14 +151,14 @@ class SingleBoardView extends Component {
                     </form>
                   </>
                 )}
-              </div>
-              <div>
-                <p>Reviews</p>
-                <form action="/" method="post">
-                  <div>
-                    <textarea>Hey... say something!</textarea>
-                  </div>
-                </form>
+                <div>
+                  <p>Reviews</p>
+                  <form action="/" method="post">
+                    <div>
+                      <textarea>Hey... say something!</textarea>
+                    </div>
+                  </form>
+                </div>
               </div>
             </>
           )) || <p>Loading...</p>}

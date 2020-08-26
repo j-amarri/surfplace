@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SizeSlider from './../components/SizeSlider';
+// import SizeSlider from './../components/SizeSlider';
 import { listBoards } from './../services/board';
 import BoardCard from './../components/BoardCard';
-import { NotExtended } from 'http-errors';
+// import { NotExtended } from 'http-errors';
 
 class HomeView extends Component {
   constructor(props) {
@@ -57,9 +57,7 @@ class HomeView extends Component {
         <div className="header-image">
           <h1>Surf Boards</h1>
         </div>
-        <div className="map-link">
-          <a href="/map">🗺 Map</a>
-        </div>
+
         <div className="filter-options">
           <div className="filter-dropdown">
             <select
@@ -90,12 +88,20 @@ class HomeView extends Component {
               <option value="Longboard">Longboard</option>
             </select>
           </div>
+          <div className="map-link">
+            <a href="/map">Map</a>
+          </div>
         </div>
         {/* <SizeSlider /> */}
         <div className="boards-list">
           {boardsToShow.map(board => (
             <BoardCard {...board} key={board._id} />
           ))}
+        </div>
+
+        <div className="host-board">
+          <p>Make money with your surf boards!</p>
+          <button>Host your board</button>
         </div>
       </>
     );
