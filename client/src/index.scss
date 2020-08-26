@@ -101,17 +101,19 @@ button {
 
   select {
     font-family: 'Montserrat', sans-serif;
-    margin: 0 20px;
     padding: 5px;
+    margin: 0 5px;
+    border: 2px solid black;
+    border-radius: 10px;
   }
 
   a {
     font-family: 'Montserrat', sans-serif;
-    margin: 0 20px;
     padding: 5px;
     border: 1px solid black;
     padding: 5px 20px;
-    border-radius: 2px;
+    border: 2px solid black;
+    border-radius: 10px;
     background-color: #ffcb00;
     color: black;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './style.scss';
+import Marker from './../Marker';
 
 class Map extends Component {
   static defaultProps = {
@@ -8,24 +9,31 @@ class Map extends Component {
       lat: 38.717393,
       lng: -9.140821
     },
-    zoom: 14
+    zoom: 6
   };
 
   render() {
-    // const center = {
-    //   // lng: this.props.coordinates[0],
-    //   // lat: this.props.coordinates[1]
-    //   lat: 38.717393,
-    //   lng: -9.140821
-    // };
+    const center = {
+      lng: this.props.location[0],
+      lat: this.props.location[1]
+    };
     return (
       <div style={{ height: '60vh', width: '60vh' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-          defaultCenter={this.props.center}
+          defaultCenter={center}
           defaultZoom={this.props.zoom}
           onClick={this.props.handleClick}
-        ></GoogleMapReact>
+        >
+          {this.props.location && (
+            <Marker
+              icon="/logo.png"
+              lat={this.props.location[1]}
+              lng={this.props.location[0]}
+              text="My Marker"
+            />
+          )}
+        </GoogleMapReact>
       </div>
     );
   }

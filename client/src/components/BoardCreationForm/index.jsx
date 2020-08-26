@@ -51,6 +51,18 @@ const BoardCreationForm = props => {
     props.onPriceChange(price);
   };
 
+  const handleLatitudeChange = event => {
+    event.preventDefault();
+    const latitude = Number(event.target.value);
+    props.onLatitudeChange(latitude);
+  };
+
+  const handleLongitudeChange = event => {
+    event.preventDefault();
+    const longitude = Number(event.target.value);
+    props.onLongitudeChange(longitude);
+  };
+
   const getUserLocation = location => {
     props.onLocationChange(location);
   };
@@ -132,8 +144,8 @@ const BoardCreationForm = props => {
       />
 
       <label htmlFor="input-location">Where is the board located?</label>
-      <input type="text" name="latitude" />
-      <input type="text" name="longitutde" />
+      <input type="text" name="latitude" onChange={handleLatitudeChange} />
+      <input type="text" name="longitude" onChange={handleLongitudeChange} />
       <div className="map">
         <Map getUserLocation={getUserLocation} />
       </div>

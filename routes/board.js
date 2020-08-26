@@ -80,7 +80,7 @@ boardRouter.post('/', upload.single('picture'), (req, res, next) => {
     size: req.body.size,
     level: req.body.level,
     location: {
-      coordinates: [req.body.longitude, req.body.latitude]
+      coordinates: [req.body.latitude, req.body.longitude]
     },
     price: {
       amount: req.body.price,

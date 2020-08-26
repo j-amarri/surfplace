@@ -14,8 +14,8 @@ class AddBoardView extends Component {
       size: '',
       level: 'All levels',
       price: '',
-      latitude: '',
-      longitude: ''
+      latitude: null,
+      longitude: null
     };
   }
 
@@ -95,15 +95,16 @@ class AddBoardView extends Component {
     });
   };
 
-  onLocationChange = location => {
-    console.log(location);
+  handleLatitudeChange = latitude => {
+    this.setState({
+      latitude
+    });
+  };
 
-    if (this.state.latitude !== location.lat) {
-      this.setState({
-        latitude: location.lat,
-        longitude: location.lng
-      });
-    }
+  handleLongitudeChange = longitude => {
+    this.setState({
+      longitude
+    });
   };
 
   render() {
@@ -118,6 +119,8 @@ class AddBoardView extends Component {
           size={this.state.size}
           level={this.state.level}
           price={this.state.price}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
           onNameChange={this.handleBoardNameChange}
           onDescriptionChange={this.handleBoardDescriptionChange}
           onModelChange={this.handleBoardModelChange}
@@ -125,7 +128,8 @@ class AddBoardView extends Component {
           onSizeChange={this.handleBoardSizeChange}
           onLevelChange={this.handleBoardLevelChange}
           onPriceChange={this.handleBoardPriceChange}
-          onLocationChange={this.onLocationChange}
+          onLatitudeChange={this.handleLatitudeChange}
+          onLongitudeChange={this.handleLongitudeChange}
           onFormSubmission={this.handleBoardCreation}
         />
       </div>
