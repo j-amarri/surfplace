@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import MapContainer from '../GoogleMap';
+import Map from '../Map';
 
 const BoardCreationForm = props => {
   const handleFormSubmission = event => {
@@ -123,8 +123,10 @@ const BoardCreationForm = props => {
       />
 
       <label htmlFor="input-location">Where is the board located?</label>
+      <input type="text" name="latitude" />
+      <input type="text" name="longitutde" />
       <div className="map">
-        <MapContainer getUserLocation={getUserLocation} />
+        <Map getUserLocation={getUserLocation} />
       </div>
 
       <label htmlFor="input-picture">Picture</label>

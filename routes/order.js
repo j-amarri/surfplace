@@ -65,11 +65,11 @@ orderRouter.post('/', (req, res, next) => {
 orderRouter.get('/list', (req, res, next) => {
   Order.find()
     .populate('product')
-    .populate('user')
-    .populate('owner')
+    // .populate({
+    //   path: 'product',
+    //   populate: { path: 'owner', model: 'user' }
+    // })
     .then(orders => {
-      console.log('hello');
-      console.log(orders);
       res.json({ orders });
     })
     .catch(error => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapContainer from './../components/GoogleMap/index';
+import Map from './../components/Map/index';
 
 class MapView extends Component {
   render() {
@@ -9,7 +9,7 @@ class MapView extends Component {
           <h1>Find a board</h1>
         </div>
         <div className="map" style={{ width: '100%' }}>
-          <MapContainer />
+          <Map />
         </div>
       </div>
     );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Marker from '../Marker';
 import './style.scss';
 
-class MapContainer extends Component {
+class Map extends Component {
   static defaultProps = {
     center: {
       lat: 38.717393,
@@ -26,21 +25,21 @@ class MapContainer extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={this.props.handleClick}
-        >
-          {this.props.markers &&
-            this.props.markers.map(marker => (
-              <Marker
-                key={marker._id}
-                id={marker._id}
-                lat={marker.lat}
-                lng={marker.lng}
-                price={marker.price}
-              />
-            ))}
-        </GoogleMapReact>
+        ></GoogleMapReact>
       </div>
     );
   }
 }
 
-export default MapContainer;
+export default Map;
+
+// {this.props.markers &&
+//   this.props.markers.map(marker => (
+//     <Marker
+//       key={marker._id}
+//       id={marker._id}
+//       lat={marker.lat}
+//       lng={marker.lng}
+//       price={marker.price}
+//     />
+//   ))}

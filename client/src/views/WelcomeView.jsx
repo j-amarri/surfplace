@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapContainer from '../components/GoogleMap/index';
+import Map from '../components/Map/index';
 import { Link } from 'react-router-dom';
 import './WelcomeView.scss';
 
@@ -33,7 +33,7 @@ class WelcomeView extends Component {
         </div>
 
         <div className="map" style={{ width: '100%' }}>
-          <MapContainer />
+          <Map />
         </div>
       </div>
     );
