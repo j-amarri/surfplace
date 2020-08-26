@@ -6,22 +6,24 @@ const Navbar = props => {
   return (
     <div className="container">
       <nav>
-        <a href="/welcome">
-          <img width="75px" src="/logo.png" alt="logo" />
+        <a href="/welcome" className="logo">
+          <img width="60px" src="/logo.png" alt="logo" />
         </a>
 
-        <Link className="nav-link" to="/board/add">
+        {/* <Link className="nav-link" to="/board/add">
           Host Board
-        </Link>
+        </Link> */}
         {(props.user && (
           <>
-            <button onClick={props.onSignOut}>Sign Out</button>
-            <Link className="nav-link" to={`/profile/${props.user._id}`}>
-              <img
-                src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
-                alt={props.user.name}
-              />
-            </Link>
+            <div className="nav-prof-signout">
+              <Link className="nav-link" to={`/profile/${props.user._id}`}>
+                <img
+                  src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  alt={props.user.name}
+                />
+              </Link>
+              <button onClick={props.onSignOut}>Sign Out</button>
+            </div>
           </>
         )) || (
           <>

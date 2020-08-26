@@ -32,9 +32,9 @@ class WelcomeView extends Component {
           </div>
         </div>
 
-        <div className="map" style={{ width: '100%' }}>
+        {/* <div className="map" style={{ width: '100%' }}>
           <MapContainer />
-        </div>
+        </div> */}
       </div>
     );
   }

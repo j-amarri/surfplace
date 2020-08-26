@@ -14,3 +14,40 @@
     background-color: black;
   }
 }
+
+.sign-up {
+  text-align: left;
+  margin-top: 2em;
+  margin-left: 2em;
+
+  p {
+    font-size: 1.2em;
+  }
+
+  input {
+    line-height: 3em;
+    padding-left: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    margin-left: 0;
+    border-radius: 15px;
+  }
+
+  select {
+    line-height: 1em;
+    padding-left: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    margin-left: 0;
+    border-radius: 15px;
+  }
+
+  button {
+    margin-left: 0;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+}
