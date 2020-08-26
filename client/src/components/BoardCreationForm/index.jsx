@@ -106,9 +106,9 @@ const BoardCreationForm = props => {
         onChange={handlePictureInputChange}
       />
 
-      {/* <div className="map">
+      <div className="map">
         <MapContainer />
-      </div> */}
+      </div>
 
       <button>Submit</button>
     </form>
