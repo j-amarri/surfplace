@@ -6,7 +6,7 @@ const Navbar = props => {
   return (
     <div className="container">
       <nav>
-        <a href="/">
+        <a href="/welcome">
           <img width="75px" src="/logo.png" alt="logo" />
         </a>
 

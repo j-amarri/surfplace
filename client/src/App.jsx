@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 // General views
 import HomeView from './views/HomeView';
 import MapView from './views/MapView';
+import WelcomeView from './views/WelcomeView';
 import ErrorView from './views/ErrorView';
 
 // Authentication views
@@ -77,6 +78,7 @@ class App extends Component {
           <Switch>
             <Route path="/" component={HomeView} exact />
             <Route path="/map" component={MapView} />
+            <Route path="/welcome" component={WelcomeView} />
             <Route path="/error" component={ErrorView} />
             {/* // Auth views */}
             <ProtectedRoute
