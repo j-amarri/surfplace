@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['Beginner', 'Intermediate', 'Advanced', 'Professional']
   },
-  profilePicture: {
+  picture: {
     type: String
   }
 });

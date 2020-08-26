@@ -13,17 +13,17 @@ class MapContainer extends Component {
   };
 
   render() {
-    const center = {
-      // lng: this.props.coordinates[0],
-      // lat: this.props.coordinates[1]
-      lat: 38.717393,
-      lng: -9.140821
-    };
+    // const center = {
+    //   // lng: this.props.coordinates[0],
+    //   // lat: this.props.coordinates[1]
+    //   lat: 38.717393,
+    //   lng: -9.140821
+    // };
     return (
       <div style={{ height: '60vh', width: '60vh' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-          defaultCenter={center}
+          defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           onClick={this.props.handleClick}
         >

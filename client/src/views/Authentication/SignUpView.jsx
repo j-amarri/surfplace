@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { signUp } from './../../services/authentication';
 
 class AuthenticationSignUpView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       email: '',
       password: '',
-      level: ''
+      level: '',
+      picture: ''
     };
   }
 
@@ -21,8 +22,8 @@ class AuthenticationSignUpView extends Component {
 
   handleFormSubmission = event => {
     event.preventDefault();
-    const { name, email, password, level } = this.state;
-    const body = { name, email, password, level };
+    const { name, email, password, level, picture } = this.state;
+    const body = { name, email, password, level, picture };
     signUp(body)
       .then(data => {
         const { user } = data;
@@ -75,6 +76,14 @@ class AuthenticationSignUpView extends Component {
             <option value="Advanced">Advanced</option>
             <option value="Professional">Professional</option>
           </select>
+
+          <label htmlFor="input-picture">Profile Picture</label>
+          <input
+            id="input-picture"
+            type="file"
+            name="picture"
+            onChange={this.handleInputChange}
+          />
 
           <button>Sign Up</button>
         </form>

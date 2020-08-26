@@ -15,7 +15,7 @@ const Navbar = props => {
         </Link>
         {(props.user && (
           <>
-            {/* <button onClick={props.onSignOut}>Sign Out</button> */}
+            <button onClick={props.onSignOut}>Sign Out</button>
             <Link className="nav-link" to={`/profile/${props.user._id}`}>
               <img
                 src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
