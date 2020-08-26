@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import SizeSlider from './../components/SizeSlider';
 import { listBoards } from './../services/board';
 import BoardCard from './../components/BoardCard';
-// import { NotExtended } from 'http-errors';
+import { Link } from 'react-router-dom';
 
 class HomeView extends Component {
   constructor(props) {
@@ -59,35 +59,31 @@ class HomeView extends Component {
         </div>
 
         <div className="filter-options">
-          <div className="filter-dropdown">
-            <select
-              name="filter-level"
-              id="filter-level"
-              onChange={this.filterByLevel}
-            >
-              <option value="">Level</option>
-              <option value="All levels">All levels</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Professional">Professional</option>
-            </select>
-          </div>
-          <div className="filter-dropdown">
-            <select
-              name="filter-model"
-              id="filter-model"
-              onChange={this.filterByModel}
-            >
-              <option value="">All models</option>
-              <option value="Fish">Fish</option>
-              <option value="Shortboard">Shortboard</option>
-              <option value="Hybrid">Hybrid</option>
-              <option value="Gun">Gun</option>
-              <option value="Funboard">Funboard</option>
-              <option value="Longboard">Longboard</option>
-            </select>
-          </div>
+          <select
+            name="filter-level"
+            id="filter-level"
+            onChange={this.filterByLevel}
+          >
+            <option value="">Level</option>
+            <option value="All levels">All levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Professional">Professional</option>
+          </select>
+          <select
+            name="filter-model"
+            id="filter-model"
+            onChange={this.filterByModel}
+          >
+            <option value="">All models</option>
+            <option value="Fish">Fish</option>
+            <option value="Shortboard">Shortboard</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Gun">Gun</option>
+            <option value="Funboard">Funboard</option>
+            <option value="Longboard">Longboard</option>
+          </select>
           <div className="map-link">
             <a href="/map">Map</a>
           </div>
@@ -101,7 +97,9 @@ class HomeView extends Component {
 
         <div className="host-board">
           <p>Make money with your surf boards!</p>
-          <button>Host your board</button>
+          <Link to="/board/add">
+            <button>Host your board</button>
+          </Link>
         </div>
       </>
     );
