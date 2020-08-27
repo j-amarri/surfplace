@@ -6,9 +6,9 @@ const Navbar = props => {
   return (
     <div className="container">
       <nav>
-        <a href="/welcome" className="logo">
+        <Link to="/welcome" className="logo">
           <img width="60px" src="/logo.png" alt="logo" />
-        </a>
+        </Link>
 
         <Link className="nav-link" to="/rent">
           Rent

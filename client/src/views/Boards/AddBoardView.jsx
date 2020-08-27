@@ -110,7 +110,7 @@ class AddBoardView extends Component {
   render() {
     return (
       <div>
-        <div className="header-chat-image">
+        <div className="header-host-image">
           <h1>Host your board</h1>
         </div>
         <BoardCreationForm
