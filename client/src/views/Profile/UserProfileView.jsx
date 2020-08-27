@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import { loadMe } from './../../services/authentication';
 import { listBoards } from './../../services/board';
 import { listOrders } from './../../services/order';
@@ -55,7 +54,7 @@ class UserProfileView extends Component {
             <h3>Your orders</h3>
             <div className="orders-list">
               {this.state.orders.map(order => (
-                <div className="order-card">
+                <div className="order-card" key={order._id}>
                   <p>{order.product.name}</p>
                   <p>{new Date(order.startDate).toLocaleDateString()}</p>
                   {/* <Link to={`/profile/${order.product.owner}`}>
