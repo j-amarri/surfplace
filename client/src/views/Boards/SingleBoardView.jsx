@@ -102,7 +102,7 @@ class SingleBoardView extends Component {
                 <span>€{board.price.amount}</span> / Day
               </h2>
               <div className="description">
-                <h3>Size: {board.size}"</h3>
+                <h3>Size: {board.size}'</h3>
                 <h5>Description:</h5>
                 <p>{board.description}</p>
                 <h5>Owner:</h5>
