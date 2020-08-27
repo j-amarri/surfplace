@@ -8,6 +8,7 @@ class SurfConditions extends Component {
       <div className="header-chat-image">
         <h1>Weather</h1>
       </div>
+      <div className="weather-app"></div>
     </div>
     );
   }

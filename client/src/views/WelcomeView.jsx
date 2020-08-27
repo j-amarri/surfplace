@@ -13,7 +13,7 @@ class WelcomeView extends Component {
           </div>
             <div className="welcome-buttons">
               <button className="welcome-rent-button">
-                <Link to={`/`}><span role="img" aria-label="wave">🌊</span> Rent</Link>
+                <Link to={`/rent`}><span role="img" aria-label="wave">🌊</span> Rent</Link>
               </button>
               <button className="welcome-host-button">
                 <Link to={`/board/add`}><span role="img" aria-label="money">💰</span> Host</Link>

@@ -10,9 +10,18 @@ const Navbar = props => {
           <img width="60px" src="/logo.png" alt="logo" />
         </a>
 
-        {/* <Link className="nav-link" to="/board/add">
-          Host Board
-        </Link> */}
+        <Link className="nav-link" to="/rent">
+          Rent
+        </Link>
+                <Link className="nav-link" to="/board/add">
+         Host
+        </Link>
+                <Link className="nav-link" to="/chat">
+          Chat
+        </Link>
+                        <Link className="nav-link" to="/surf-conditions">
+          Feel
+        </Link>
         {(props.user && (
           <>
             <div className="nav-prof-signout">
