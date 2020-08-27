@@ -31,7 +31,6 @@ import ConfirmationView from './views/Booking/ConfirmationView';
 // Profile views
 import UserProfileView from './views/Profile/UserProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
-import SurfConditions from './views/SurfConditionsView';
 
 class App extends Component {
   constructor() {
@@ -79,7 +78,8 @@ class App extends Component {
         <BrowserRouter>
           <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
           <Switch>
-            <Route path="/" component={HomeView} exact />
+            <Route path="/" component={WelcomeView} exact />
+            <Route path="/rent" component={HomeView} exact />
             <Route path="/map" component={MapView} />
             <Route path="/welcome" component={WelcomeView} />
             <Route path="/chat" component={ChatView} />
