@@ -98,8 +98,9 @@ class SingleBoardView extends Component {
                   <img src={board.picture} alt={board.name} width="100%" />
                 )}
               </div>
-              <h3>Size: {board.size}"</h3>
+
               <div className="description">
+                <h3>Size: {board.size}"</h3>
                 <h5>Description:</h5>
                 <p>{board.description}</p>
                 <h5>Owner:</h5>
