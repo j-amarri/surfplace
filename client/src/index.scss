@@ -76,13 +76,11 @@ button {
   background-size: cover;
   h1 {
     color: white;
-    background-color: #F95A2C;
+    background-color: #f95a2c;
     padding: 20px;
     margin: 0;
   }
 }
-
-
 
 .header-host-image {
   padding: 3em 0;
@@ -92,13 +90,11 @@ button {
 
   h1 {
     color: white;
-    background-color: #FF89BB;
+    background-color: #ff89bb;
     padding: 20px;
     margin: 0;
   }
 }
-
-
 
 .map-link {
   text-align: right;
@@ -184,11 +180,9 @@ button {
   margin-bottom: 20px;
 }
 
-
 .weather {
   display: flex;
   flex-direction: column;
-
 
   .weather-app {
     padding: 3em 0;
@@ -197,8 +191,6 @@ button {
     background-size: cover;
     height: 500px;
     width: 100%;
-    background-image: url("https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/02/6b/6d026bc3-b7cd-8bae-b580-175f6a31e3cd/mzl.sqsxholy.png/750x750bb.jpeg");
+    background-image: url('https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/02/6b/6d026bc3-b7cd-8bae-b580-175f6a31e3cd/mzl.sqsxholy.png/750x750bb.jpeg');
   }
 }
-
-

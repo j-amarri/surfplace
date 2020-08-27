@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
-import Map from './../components/Map/index';
+import GoogleMapReact from 'google-map-react';
+import { listBoards } from './../services/board';
+import Marker from './../components/Marker';
 
 class MapView extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loaded: false,
+      boards: []
+    };
+  }
+  static defaultProps = {
+    center: {
+      lat: 38.717393,
+      lng: -9.140821
+    },
+    zoom: 6
+  };
+
+  componentDidMount() {
+    listBoards()
+      .then(data => {
+        const boards = data;
+        this.setState({
+          boards,
+          loaded: true
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     // const boardsToShow = this.filteredBoardsList;
+    if (this.state.loaded) {
+      console.log(this.state);
+    }
     return (
       <div>
         <div className="header-map-image">
@@ -43,15 +77,30 @@ class MapView extends Component {
             <a href="/rent">List</a>
           </div>
         </div>
-        {/* <SizeSlider /> */}
-        <div className="boards-list">
-          {/* {boardsToShow.map(board => (
-            <BoardCard {...board} key={board._id} />
-          ))} */}
-        </div>
-        <div className="map" style={{ width: '100%' }}>
+        {this.state.loaded && (
+          <div style={{ height: '60vh', width: '60vh' }}>
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+              }}
+              defaultCenter={this.props.center}
+              defaultZoom={this.props.zoom}
+              onClick={this.props.handleClick}
+            >
+              {this.state.boards.map(board => (
+                <Marker
+                  key={board._id}
+                  lat={board.location.coordinates[0]}
+                  lng={board.location.coordinates[1]}
+                />
+              ))}
+            </GoogleMapReact>
+          </div>
+        )}
+
+        {/* <div className="map" style={{ width: '100%' }}>
           <Map />
-        </div>
+        </div> */}
       </div>
     );
   }
