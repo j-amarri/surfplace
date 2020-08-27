@@ -9,6 +9,7 @@ import { createOrder } from './../../services/order';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './SingleBoardView.scss';
+import Map from './../../components/Map';
 
 import moment from 'moment';
 
@@ -80,7 +81,7 @@ class SingleBoardView extends Component {
   render() {
     const board = this.state.board;
     if (board) {
-      console.log(board.owner._id);
+      console.log(board);
       console.log(this.props.user._id);
     }
 
@@ -97,25 +98,17 @@ class SingleBoardView extends Component {
                   <img src={board.picture} alt={board.name} width="100%" />
                 )}
               </div>
+              <h3>Size: {board.size}"</h3>
               <div className="description">
-                <h5>Description</h5>
+                <h5>Description:</h5>
                 <p>{board.description}</p>
-              </div>
-
-              <div className="description">
-                <h5>Owner</h5>
-                <Link to={`/profile/${board.owner._id}`}>
-                  <em>{board.owner.name}</em>
-                </Link>
-              </div>
-
-              <div className="reviews">
+                <h5>Owner:</h5>
                 <p>
-                  <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
+                  <Link to={`/profile/${board.owner._id}`}>
+                    <em>{board.owner.name}</em>
+                  </Link>
                 </p>
               </div>
-
-              <h2>{board.size}"</h2>
 
               <h2>
                 <span>€{board.price.amount}</span> / Day
@@ -129,7 +122,6 @@ class SingleBoardView extends Component {
                   startDate={this.state.startDate}
                   endDate={this.state.endDate}
                   excludeDates={this.state.bookedDates}
-                  //excludeDates={['2020-08-02T16:42:33.647+00:00']}
                   selectsRange
                   inline
                 />
@@ -138,6 +130,9 @@ class SingleBoardView extends Component {
                 <form onSubmit={this.handleOrderCreation} className="rent-link">
                   <button>Rent Board</button>
                 </form>
+                <div className="map">
+                  <Map location={board.location.coordinates} />
+                </div>
                 {this.props.user._id === board.owner._id && (
                   <>
                     <button className="edit-button">
@@ -151,6 +146,11 @@ class SingleBoardView extends Component {
                   </>
                 )}
                 <div>
+                  <div className="reviews">
+                    <p>
+                      <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
+                    </p>
+                  </div>
                   <p>Reviews</p>
                   <form action="/" method="post">
                     <div>

@@ -18,8 +18,6 @@ class WelcomeView extends Component {
               <button className="welcome-host-button">
                 <Link to={`/board/add`}><span role="img" alt="aria-label">💰</span> Host</Link>
               </button>
-            {/* </div>
-            <div className="button-container"> */}
               <button className="welcome-chat-button">
                 <Link to={`/chat`}><span role="img" alt="aria-label">💬</span> Chat</Link>
               </button>
@@ -27,7 +25,7 @@ class WelcomeView extends Component {
                 <Link to={`/surf-conditions`}><span role="img" alt="aria-label">☀️</span> Feel</Link>
               </button>
             </div>
-        </div>
+      </div>
       </div>
     );
   }

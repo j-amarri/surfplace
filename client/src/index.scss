@@ -101,27 +101,21 @@ button {
 
   select {
     font-family: 'Montserrat', sans-serif;
-    margin: 0 20px;
     padding: 5px;
+    margin: 0 5px;
+    border: 2px solid black;
+    border-radius: 10px;
   }
 
   a {
     font-family: 'Montserrat', sans-serif;
-    margin: 0 20px;
     padding: 5px;
     border: 1px solid black;
     padding: 5px 20px;
-    border-radius: 2px;
+    border: 2px solid black;
+    border-radius: 10px;
     background-color: #ffcb00;
     color: black;
-  }
-}
-
-.map {
-  width: 100%;
-
-  .gm-style-mtc {
-    display: none;
   }
 }
 
@@ -150,4 +144,11 @@ button {
     padding: 20px;
     margin: 0;
   }
+}
+
+.map {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

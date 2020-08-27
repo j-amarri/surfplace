@@ -34,43 +34,6 @@ class UserProfileView extends Component {
 
   componentDidMount() {
     this.fetchData();
-    console.log(this.state);
-    // loadMe()
-    //   .then(data => {
-    //     this.setState({
-    //       user: data.user
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // listBoards()
-    //   .then(data => {
-    //     console.log(data);
-    //     const ownerBoards = data.filter(
-    //       board => board.owner === this.state.user._id
-    //     );
-    //     this.setState({
-    //       boards: ownerBoards,
-    //       loaded: true
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // listOrders()
-    //   .then(data => {
-    //     const userOrders = data.orders.filter(
-    //       order => order.owner === this.state.user._id
-    //     );
-    //     this.setState({
-    //       orders: userOrders,
-    //       loaded: true
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   }
 
   render() {
