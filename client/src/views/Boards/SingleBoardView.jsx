@@ -6,9 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './SingleBoardView.scss';
 import Map from './../../components/Map';
-
 import moment from 'moment';
-
 class SingleBoardView extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +18,6 @@ class SingleBoardView extends Component {
       bookedDates: []
     };
   }
-
   componentDidMount() {
     const id = this.props.match.params.id;
     let board = null;
@@ -36,18 +33,15 @@ class SingleBoardView extends Component {
       .catch(error => {
         console.log(error);
       });
-
     // call service to retrieve orders >>> listOrders()
     // filter the order relevant to this board only
     // extract booked dates
     // push results into array
   }
-
   onChange = dates => {
     const [start, end] = dates;
     this.setState({ startDate: start, endDate: end });
   };
-
   handleOrderCreation = event => {
     event.preventDefault();
     // information from board, user ID, start/end date
@@ -60,11 +54,9 @@ class SingleBoardView extends Component {
       this.props.history.push(`/order/${newOrder._id}`);
     });
   };
-
   handleBoardDelete = event => {
     event.preventDefault();
     const id = this.props.match.params.id;
-
     deleteBoard(id)
       .then(() => {
         this.props.history.push('/');
@@ -73,14 +65,12 @@ class SingleBoardView extends Component {
         console.log(error);
       });
   };
-
   render() {
     const board = this.state.board;
     if (board) {
       console.log(board);
       console.log(this.props.user._id);
     }
-
     return (
       <>
         <div className="single-board-view">
@@ -94,11 +84,8 @@ class SingleBoardView extends Component {
                   <img src={board.picture} alt={board.name} width="100%" />
                 )}
               </div>
-              <h2>
-                <span>€{board.price.amount}</span> / Day
-              </h2>
               <div className="description">
-                <h3>Size: {board.size}'</h3>
+                <h3>Size: {board.size}"</h3>
                 <h5>Description:</h5>
                 <p>{board.description}</p>
                 <h5>Owner:</h5>
@@ -108,32 +95,9 @@ class SingleBoardView extends Component {
                   </Link>
                 </p>
               </div>
-
-
-<<<<<<< HEAD
-
-              <div className="rent-link">
-                {!(this.props.user._id === board.owner._id) && (
-<>
-              <div className="booking-calendar">
-                <p>Choose date(s)</p>
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.onChange}
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  excludeDates={this.state.bookedDates}
-                  selectsRange
-                  inline
-                />
-              </div>
-
-                  <form
-                    onSubmit={this.handleOrderCreation}
-                  >
-                    <button className="rent-button">Rent Board</button>
-                  </form>
-=======
+              <h2>
+                <span>€{board.price.amount}</span> / Day
+              </h2>
               <div>
                 {!(this.props.user._id === board.owner._id) && (
                   <>
@@ -167,32 +131,19 @@ class SingleBoardView extends Component {
                   <>
                     <button className="edit-button">
                       <Link to={`/board/${this.props.match.params.id}/edit`}>
-                        <span role="img" aria-label="chat">✏️ </span> Edit board
+                        Edit board
                       </Link>
                     </button>
                     <form onSubmit={this.handleBoardDelete}>
                       <button
                         className="delete-button"
-                        role="img"
-                        aria-label="delete"
                       >
-                        🗑 Delete board
+                      Delete board
                       </button>
                     </form>
                   </>
                 )}
                 <div>
-                  {/* <div className="reviews">
-                    <p>
-                      <span role="img" aria-label="stars">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
-                    </p>
-                  </div>
-                  <p>Reviews</p> */}
-                  {/* <form action="/" method="post">
-                    <div>
-                      <textarea>Hey... say something!</textarea>
-                    </div>
-                  </form> */}
                 </div>
               </div>
             </>
