@@ -51,34 +51,28 @@ const BoardCreationForm = props => {
     props.onPriceChange(price);
   };
 
-  const handleLatitudeChange = event => {
-    event.preventDefault();
-    const latitude = Number(event.target.value);
-    props.onLatitudeChange(latitude);
-  };
-
-  const handleLongitudeChange = event => {
-    event.preventDefault();
-    const longitude = Number(event.target.value);
-    props.onLongitudeChange(longitude);
-  };
-
-  const getUserLocation = location => {
-    props.onLocationChange(location);
-  };
-
-  // const handleMapClick = event => {
-  //   const { lng, lat } = event;
-  //   const marker = {
-  //     lng,
-  //     lat
-  //   };
-  //   this.setState({
-  //     lng,
-  //     lat,
-  //     markers: [marker]
-  //   });
+  // const handleLatitudeChange = event => {
+  //   event.preventDefault();
+  //   const latitude = Number(event.target.value);
+  //   props.onLatitudeChange(latitude);
   // };
+
+  // const handleLongitudeChange = event => {
+  //   event.preventDefault();
+  //   const longitude = Number(event.target.value);
+  //   props.onLongitudeChange(longitude);
+  // };
+
+  // const getUserLocation = location => {
+  //   props.onLocationChange(location);
+  // };
+
+  const handleMapClick = event => {
+    const { lng, lat } = event;
+    props.onLatitudeChange(lat);
+    props.onLongitudeChange(lng);
+    console.log(lng, lat);
+  };
 
   return (
     <form className="board-form" onSubmit={handleFormSubmission}>
@@ -156,7 +150,7 @@ const BoardCreationForm = props => {
         onChange={handlePictureInputChange}
       />
 
-      <label htmlFor="input-location">Where is the board located?</label>
+      {/* <label htmlFor="input-location">Where is the board located?</label>
       <input
         type="text"
         name="latitude"
@@ -168,14 +162,11 @@ const BoardCreationForm = props => {
         name="longitude"
         placeholder="Longitude"
         onChange={handleLongitudeChange}
-      />
-      {/* <div className="map">
-        <Map getUserLocation={getUserLocation} />
-      </div> */}
+      /> */}
 
-      {/* <div id="map">
-          <Map markers={this.state.markers} coordinates={this.props.coordinates} handleClick={handleMapClick} />
-      </div> */}
+      <div id="map">
+        <Map location={props.location} handleClick={handleMapClick} />
+      </div>
 
       <button>Submit</button>
     </form>
