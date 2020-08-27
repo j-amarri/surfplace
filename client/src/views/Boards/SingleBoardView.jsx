@@ -137,18 +137,18 @@ class SingleBoardView extends Component {
                   <>
                     <button className="edit-button">
                       <Link to={`/board/${this.props.match.params.id}/edit`}>
-                        ✏️ Edit board
+                        <span role="img" aria-label="chat">✏️</span> Edit board
                       </Link>
                     </button>
                     <form onSubmit={this.handleBoardDelete}>
-                      <button className="delete-button">🗑 Delete board</button>
+                      <button className="delete-button" role="img" aria-label="delete">🗑 Delete board</button>
                     </form>
                   </>
                 )}
                 <div>
                   <div className="reviews">
                     <p>
-                      <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
+                      <span role="img" aria-label="stars">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
                     </p>
                   </div>
                   <p>Reviews</p>

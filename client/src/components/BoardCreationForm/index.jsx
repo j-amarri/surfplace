@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import Map from '../Map';
+// import Map from '../Map';
 
 const BoardCreationForm = props => {
   const handleFormSubmission = event => {
@@ -63,9 +63,9 @@ const BoardCreationForm = props => {
     props.onLongitudeChange(longitude);
   };
 
-  const getUserLocation = location => {
-    props.onLocationChange(location);
-  };
+  // const getUserLocation = location => {
+  //   props.onLocationChange(location);
+  // };
 
   // const handleMapClick = event => {
   //   const { lng, lat } = event;
