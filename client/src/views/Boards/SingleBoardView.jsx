@@ -98,7 +98,9 @@ class SingleBoardView extends Component {
                   <img src={board.picture} alt={board.name} width="100%" />
                 )}
               </div>
-
+              <h2>
+                <span>€{board.price.amount}</span> / Day
+              </h2>
               <div className="description">
                 <h3>Size: {board.size}"</h3>
                 <h5>Description:</h5>
@@ -111,10 +113,11 @@ class SingleBoardView extends Component {
                 </p>
               </div>
 
-              <h2>
-                <span>€{board.price.amount}</span> / Day
-              </h2>
 
+
+              <div className="rent-link">
+                {!(this.props.user._id === board.owner._id) && (
+<>
               <div className="booking-calendar">
                 <p>Choose date(s)</p>
                 <DatePicker
@@ -127,14 +130,13 @@ class SingleBoardView extends Component {
                   inline
                 />
               </div>
-              <div>
-                {!(this.props.user._id === board.owner._id) && (
+
                   <form
                     onSubmit={this.handleOrderCreation}
-                    className="rent-link"
                   >
-                    <button>Rent Board</button>
+                    <button className="rent-button">Rent Board</button>
                   </form>
+                  </>
                 )}
                 <div className="map">
                   <Map
@@ -146,7 +148,7 @@ class SingleBoardView extends Component {
                   <>
                     <button className="edit-button">
                       <Link to={`/board/${this.props.match.params.id}/edit`}>
-                        <span role="img" aria-label="chat">✏️</span> Edit board
+                        <span role="img" aria-label="chat">✏️ </span> Edit board
                       </Link>
                     </button>
                     <form onSubmit={this.handleBoardDelete}>

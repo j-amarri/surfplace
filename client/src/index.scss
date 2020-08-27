@@ -71,10 +71,18 @@ button {
 
 .header-weather-image {
   padding: 3em 0;
-  background-image: url('https://images.unsplash.com/photo-1507991854441-0529e7aaebb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+  background-image: url('https://images.unsplash.com/photo-1519575640385-ce7bb54a2ce3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80');
   background-position: center;
   background-size: cover;
+  h1 {
+    color: white;
+    background-color: #F95A2C;
+    padding: 20px;
+    margin: 0;
+  }
 }
+
+
 
 .header-host-image {
   padding: 3em 0;
@@ -176,7 +184,19 @@ button {
   margin-bottom: 20px;
 }
 
-.weather-app {
-  background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa1.mzstatic.com%2Fus%2Fr30%2FPurple18%2Fv4%2F58%2F78%2F21%2F587821b3-745d-27ab-ff3c-1e94db0606a9%2Fscreen696x696.jpeg&f=1&nofb=1");
-  backgroud-size: 100%;
+
+.weather {
+  display: flex;
+  flex-direction: column;
+
+
+  .weather-app {
+    padding: 3em 0;
+    margin: auto;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    background-image: url("https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/6d/02/6b/6d026bc3-b7cd-8bae-b580-175f6a31e3cd/mzl.sqsxholy.png/750x750bb.jpeg");
+  }
 }

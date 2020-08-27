@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class SurfConditions extends Component {
   render() {
     return (
-    <div>
+    <div className="weather">
       <div className="header-weather-image">
         <h1>Weather</h1>
       </div>

@@ -9,10 +9,11 @@ const Navbar = props => {
         <Link to="/welcome" className="logo">
           <img width="60px" src="/logo.png" alt="logo" />
         </Link>
-
-        <Link className="nav-link" to="/rent">
+                <Link className="nav-link" to="/rent">
           Rent
         </Link>
+        {(props.user && (
+          <>
                 <Link className="nav-link" to="/board/add">
          Host
         </Link>
@@ -22,8 +23,6 @@ const Navbar = props => {
                         <Link className="nav-link" to="/surf-conditions">
           Feel
         </Link>
-        {(props.user && (
-          <>
             <div className="nav-prof-signout">
               <Link className="nav-link" to={`/profile/${props.user._id}`}>
                 <img
