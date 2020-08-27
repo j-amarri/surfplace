@@ -31,7 +31,6 @@ import ConfirmationView from './views/Booking/ConfirmationView';
 // Profile views
 import UserProfileView from './views/Profile/UserProfileView';
 import EditProfileView from './views/Profile/EditProfileView';
-import SurfConditions from './views/SurfConditionsView';
 
 class App extends Component {
   constructor() {

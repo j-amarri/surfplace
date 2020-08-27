@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { loadMe } from './../../services/authentication';
+// import { loadMe } from './../../services/authentication';
 import { loadOrder } from './../../services/order';
-import moment from 'moment';
+// import moment from 'moment';
 
 class CheckoutView extends Component {
   constructor(props) {

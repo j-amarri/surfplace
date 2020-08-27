@@ -3,7 +3,7 @@ import Map from './../components/Map/index';
 
 class MapView extends Component {
   render() {
-    const boardsToShow = this.filteredBoardsList;
+    // const boardsToShow = this.filteredBoardsList;
     return (
       <div>
         <div className="header-map-image">

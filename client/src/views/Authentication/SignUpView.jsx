@@ -91,6 +91,10 @@ class AuthenticationSignUpView extends Component {
 
           <button>Sign Up</button>
         </form>
+        <small>Already have an account? </small>
+        <a href="/sign-in" alt="">
+          Sign in
+        </a>
       </div>
     );
   }

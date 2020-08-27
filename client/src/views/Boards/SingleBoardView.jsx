@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   loadBoard,
   deleteBoard,
-  listBoards,
   boardBooked
 } from './../../services/board';
 import { createOrder } from './../../services/order';

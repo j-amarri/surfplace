@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Map from '../components/Map/index';
 import { Link } from 'react-router-dom';
 import './WelcomeView.scss';
 
@@ -9,31 +8,25 @@ class WelcomeView extends Component {
       <div>
         <div className="welcome-container">
           <div className="welcome-title">
-            <p>the</p>
             <h1>Surf Place</h1>
+            <p>The place you can count on for all things surf.</p>
           </div>
-          <div className="welcome-buttons">
-            <div className="button-container">
+            <div className="welcome-buttons">
               <button className="welcome-rent-button">
-                <Link to={`/`}>🌊 Rent</Link>
+                <Link to={`/`}><span role="img" alt="aria-label">🌊</span> Rent</Link>
               </button>
               <button className="welcome-host-button">
-                <Link to={`/board/add`}>💰 Host</Link>
+                <Link to={`/board/add`}><span role="img" alt="aria-label">💰</span> Host</Link>
               </button>
-            </div>
-            <div className="button-container">
+            {/* </div>
+            <div className="button-container"> */}
               <button className="welcome-chat-button">
-                <Link to={`/chat`}>💬 Chat</Link>
+                <Link to={`/chat`}><span role="img" alt="aria-label">💬</span> Chat</Link>
               </button>
               <button className="welcome-feel-button">
-                <Link to={`/surf-conditions`}>☀️ Feel</Link>
+                <Link to={`/surf-conditions`}><span role="img" alt="aria-label">☀️</span> Feel</Link>
               </button>
             </div>
-          </div>
-        </div>
-
-        <div className="map" style={{ width: '100%' }}>
-          <Map />
         </div>
       </div>
     );

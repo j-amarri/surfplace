@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class SurfConditions extends Component {
   render() {
     return (
-      <div>
-        <h1>Surf Conditions</h1>
+    <div>
+      <div className="header-chat-image">
+        <h1>Weather</h1>
       </div>
+    </div>
     );
   }
 }
