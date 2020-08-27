@@ -13,7 +13,6 @@ class Map extends Component {
   };
 
   render() {
-    console.log(this.props);
     let center;
     if (this.props.latitude) {
       center = {

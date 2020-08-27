@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  loadBoard,
-  deleteBoard,
-  boardBooked
-} from './../../services/board';
+import { loadBoard, deleteBoard, boardBooked } from './../../services/board';
 import { createOrder } from './../../services/order';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -114,6 +110,7 @@ class SingleBoardView extends Component {
               </div>
 
 
+<<<<<<< HEAD
 
               <div className="rent-link">
                 {!(this.props.user._id === board.owner._id) && (
@@ -136,6 +133,28 @@ class SingleBoardView extends Component {
                   >
                     <button className="rent-button">Rent Board</button>
                   </form>
+=======
+              <div>
+                {!(this.props.user._id === board.owner._id) && (
+                  <>
+                    <div className="booking-calendar">
+                      <p>Choose date(s)</p>
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={this.onChange}
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        excludeDates={this.state.bookedDates}
+                        selectsRange
+                        inline
+                      />
+                    </div>
+                    <form
+                      onSubmit={this.handleOrderCreation}
+                      className="rent-link"
+                    >
+                      <button>Rent Board</button>
+                    </form>
                   </>
                 )}
                 <div className="map">
@@ -152,7 +171,13 @@ class SingleBoardView extends Component {
                       </Link>
                     </button>
                     <form onSubmit={this.handleBoardDelete}>
-                      <button className="delete-button" role="img" aria-label="delete">🗑 Delete board</button>
+                      <button
+                        className="delete-button"
+                        role="img"
+                        aria-label="delete"
+                      >
+                        🗑 Delete board
+                      </button>
                     </form>
                   </>
                 )}
