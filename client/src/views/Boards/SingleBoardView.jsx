@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  loadBoard,
-  deleteBoard,
-  boardBooked
-} from './../../services/board';
+import { loadBoard, deleteBoard, boardBooked } from './../../services/board';
 import { createOrder } from './../../services/order';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -115,26 +111,28 @@ class SingleBoardView extends Component {
                 <span>€{board.price.amount}</span> / Day
               </h2>
 
-              <div className="booking-calendar">
-                <p>Choose date(s)</p>
-                <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.onChange}
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  excludeDates={this.state.bookedDates}
-                  selectsRange
-                  inline
-                />
-              </div>
               <div>
                 {!(this.props.user._id === board.owner._id) && (
-                  <form
-                    onSubmit={this.handleOrderCreation}
-                    className="rent-link"
-                  >
-                    <button>Rent Board</button>
-                  </form>
+                  <>
+                    <div className="booking-calendar">
+                      <p>Choose date(s)</p>
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={this.onChange}
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        excludeDates={this.state.bookedDates}
+                        selectsRange
+                        inline
+                      />
+                    </div>
+                    <form
+                      onSubmit={this.handleOrderCreation}
+                      className="rent-link"
+                    >
+                      <button>Rent Board</button>
+                    </form>
+                  </>
                 )}
                 <div className="map">
                   <Map
@@ -146,11 +144,20 @@ class SingleBoardView extends Component {
                   <>
                     <button className="edit-button">
                       <Link to={`/board/${this.props.match.params.id}/edit`}>
-                        <span role="img" aria-label="chat">✏️</span> Edit board
+                        <span role="img" aria-label="chat">
+                          ✏️
+                        </span>{' '}
+                        Edit board
                       </Link>
                     </button>
                     <form onSubmit={this.handleBoardDelete}>
-                      <button className="delete-button" role="img" aria-label="delete">🗑 Delete board</button>
+                      <button
+                        className="delete-button"
+                        role="img"
+                        aria-label="delete"
+                      >
+                        🗑 Delete board
+                      </button>
                     </form>
                   </>
                 )}
