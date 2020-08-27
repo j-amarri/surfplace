@@ -39,9 +39,8 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
+      maxAge: 15 * 24 * 60 * 60 * 1000,
       sameSite: 'none',
-      httpOnly: true,
       secure: true
     },
     store: new (connectMongo(expressSession))({
