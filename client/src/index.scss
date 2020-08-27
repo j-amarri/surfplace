@@ -60,14 +60,23 @@ button {
   background-image: url('https://images.unsplash.com/photo-1507991854441-0529e7aaebb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
   background-position: center;
   background-size: cover;
+
+  h1 {
+    color: white;
+    background-color: #00c6ae;
+    padding: 20px;
+    margin: 0;
+  }
 }
 
-.header-image h1 {
-  color: white;
-  background-color: #00c6ae;
-  padding: 20px;
-  margin: 0;
+.header-weather-image {
+  padding: 3em 0;
+  background-image: url('https://images.unsplash.com/photo-1507991854441-0529e7aaebb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+  background-position: center;
+  background-size: cover;
 }
+
+
 
 .map-link {
   text-align: right;

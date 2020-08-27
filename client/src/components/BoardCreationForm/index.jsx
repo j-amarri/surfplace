@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-// import Map from '../Map';
+import Map from '../Map';
 
 const BoardCreationForm = props => {
   const handleFormSubmission = event => {

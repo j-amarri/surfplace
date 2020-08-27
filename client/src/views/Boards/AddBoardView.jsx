@@ -46,7 +46,7 @@ class AddBoardView extends Component {
       .then(data => {
         //const board = data.board;
         //const id = board._id;
-        this.props.history.push(`/`);
+        this.props.history.push(`/rent`);
       })
       .catch(error => {
         console.log(error);
