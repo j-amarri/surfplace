@@ -26,8 +26,8 @@ class UserProfileView extends Component {
     this.setState({
       user: user.user,
       boards: ownerBoards,
-      loaded: true,
-      orders: ownerOrders
+      orders: ownerOrders,
+      loaded: true
     });
   };
 
@@ -37,6 +37,7 @@ class UserProfileView extends Component {
 
   render() {
     if (this.state.loaded) {
+      console.log(this.state.user);
       console.log(this.state.orders);
     }
     return (

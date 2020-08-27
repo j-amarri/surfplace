@@ -11,7 +11,6 @@ const BoardCreationForm = props => {
   const handleNameInputChange = event => {
     event.preventDefault();
     const name = event.target.value;
-
     props.onNameChange(name);
   };
 
@@ -74,7 +73,6 @@ const BoardCreationForm = props => {
     const { lng, lat } = event;
     props.onLatitudeChange(lat);
     props.onLongitudeChange(lng);
-    console.log(lng, lat);
   };
 
   return (
