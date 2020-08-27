@@ -74,7 +74,7 @@ class MapView extends Component {
             </select>
           </div>
           <div className="map-link">
-            <a href="/">List</a>
+            <a href="/rent">List</a>
           </div>
         </div>
         {this.state.loaded && (

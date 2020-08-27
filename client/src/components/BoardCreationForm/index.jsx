@@ -76,8 +76,9 @@ const BoardCreationForm = props => {
   };
 
   return (
+  <div className="board-host">
     <form className="board-form" onSubmit={handleFormSubmission}>
-      <label htmlFor="input-name">Name</label>
+      <label htmlFor="input-name">Name of listing</label>
       <input
         type="text"
         name="name"
@@ -165,7 +166,7 @@ const BoardCreationForm = props => {
         onChange={handleLongitudeChange}
       /> */}
 
-      <div id="map">
+      <div className="map">
         <Map
           latitude={props.latitude}
           longitude={props.longitude}
@@ -175,6 +176,7 @@ const BoardCreationForm = props => {
 
       <button>Submit</button>
     </form>
+  </div>
   );
 };
 

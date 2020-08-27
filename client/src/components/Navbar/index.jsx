@@ -9,21 +9,20 @@ const Navbar = props => {
         <Link to="/welcome" className="logo">
           <img width="60px" src="/logo.png" alt="logo" />
         </Link>
-
         <Link className="nav-link" to="/rent">
           Rent
         </Link>
-                <Link className="nav-link" to="/board/add">
-         Host
-        </Link>
-                <Link className="nav-link" to="/chat">
-          Chat
-        </Link>
-                        <Link className="nav-link" to="/surf-conditions">
-          Feel
-        </Link>
         {(props.user && (
           <>
+        <Link className="nav-link" to="/board/add">
+         Host
+        </Link>
+        <Link className="nav-link" to="/chat">
+          Chat
+        </Link>
+        <Link className="nav-link" to="/surf-conditions">
+          Feel
+        </Link>
             <div className="nav-prof-signout">
               <Link className="nav-link" to={`/profile/${props.user._id}`}>
                 <img
@@ -35,14 +34,14 @@ const Navbar = props => {
             </div>
           </>
         )) || (
-          <>
+          <div className="sign-links">
             <Link className="nav-link" to="/sign-up">
               Sign Up
             </Link>
             <Link className="nav-link" to="/sign-in">
               Sign In
             </Link>
-          </>
+          </div>
         )}
       </nav>
     </div>
