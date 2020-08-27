@@ -128,11 +128,19 @@ class SingleBoardView extends Component {
                 />
               </div>
               <div>
-                <form onSubmit={this.handleOrderCreation} className="rent-link">
-                  <button>Rent Board</button>
-                </form>
+                {!(this.props.user._id === board.owner._id) && (
+                  <form
+                    onSubmit={this.handleOrderCreation}
+                    className="rent-link"
+                  >
+                    <button>Rent Board</button>
+                  </form>
+                )}
                 <div className="map">
-                  <Map location={board.location.coordinates} />
+                  <Map
+                    latitude={board.location.coordinates[0]}
+                    longitude={board.location.coordinates[1]}
+                  />
                 </div>
                 {this.props.user._id === board.owner._id && (
                   <>
@@ -147,17 +155,17 @@ class SingleBoardView extends Component {
                   </>
                 )}
                 <div>
-                  <div className="reviews">
+                  {/* <div className="reviews">
                     <p>
                       <span role="img">⭐️⭐️⭐️⭐️⭐️</span> 4.6 (5 ratings)
                     </p>
                   </div>
-                  <p>Reviews</p>
-                  <form action="/" method="post">
+                  <p>Reviews</p> */}
+                  {/* <form action="/" method="post">
                     <div>
                       <textarea>Hey... say something!</textarea>
                     </div>
-                  </form>
+                  </form> */}
                 </div>
               </div>
             </>

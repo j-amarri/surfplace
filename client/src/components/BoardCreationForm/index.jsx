@@ -165,7 +165,11 @@ const BoardCreationForm = props => {
       /> */}
 
       <div id="map">
-        <Map location={props.location} handleClick={handleMapClick} />
+        <Map
+          latitude={props.latitude}
+          longitude={props.longitude}
+          handleClick={handleMapClick}
+        />
       </div>
 
       <button>Submit</button>

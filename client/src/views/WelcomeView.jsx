@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Map from '../components/Map/index';
+// import Map from '../components/Map/index';
 import { Link } from 'react-router-dom';
 import './WelcomeView.scss';
 
@@ -31,10 +31,6 @@ class WelcomeView extends Component {
             </div>
           </div>
         </div>
-
-        {/* <div className="map" style={{ width: '100%' }}>
-          <Map />
-        </div> */}
       </div>
     );
   }

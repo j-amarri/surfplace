@@ -14,19 +14,28 @@ class Map extends Component {
 
   render() {
     console.log(this.props);
+    let center;
+    if (this.props.latitude) {
+      center = {
+        lng: this.props.longitude,
+        lat: this.props.latitude
+      };
+    } else {
+      center = this.props.center;
+    }
     return (
       <div style={{ height: '60vh', width: '60vh' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-          defaultCenter={this.props.center}
+          defaultCenter={center}
           defaultZoom={this.props.zoom}
           onClick={this.props.handleClick}
         >
-          {this.props.location && (
+          {this.props.latitude && (
             <Marker
               icon="/logo.png"
-              lat={this.props.location[0]}
-              lng={this.props.location[1]}
+              lat={this.props.latitude}
+              lng={this.props.longitude}
               text="My Marker"
             />
           )}
